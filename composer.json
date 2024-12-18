@@ -1,0 +1,34 @@
+{
+    "name": "melasistema/hyde-layouts-manager",
+    "description": "Effortlessly manage and customize layouts in HydePHP. This developer-friendly library enhances HydePHP's modularity, offering seamless integration with TailwindCSS and Laravel ecosystems while providing unparalleled flexibility for customization.",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.0.1",
+    "keywords": ["hydephp", "hyde", "hyde layouts", "hydephp layouts", "layouts-manager", "layout customization", "tailwindcss", "laravel", "laravel integration", "php library", "hydephp extension", "developer tools", "frontend framework", "hydephp theme", "hyde modular layouts", "laravel ecosystem"],
+    "autoload": {
+        "psr-4": {
+            "Melasistema\\HydeLayoutsManager\\": "src/"
+        },
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Luca Visciola",
+            "email": "info@melasistema.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "hyde/framework": "^1.7"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Melasistema\\HydeLayoutsManager\\HydeLayoutsManagerServiceProvider"
+            ]
+        }
+    }
+}
