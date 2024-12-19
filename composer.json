@@ -8,10 +8,7 @@
     "autoload": {
         "psr-4": {
             "Melasistema\\HydeLayoutsManager\\": "src/"
-        },
-        "files": [
-            "src/Helpers/helpers.php"
-        ]
+        }
     },
     "authors": [
         {
@@ -22,7 +19,8 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "hyde/framework": "^1.7"
+        "hyde/framework": "^1.7",
+        "@hyperui/components": "^1.0"
     },
     "extra": {
         "laravel": {
