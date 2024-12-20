@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager;
 
-use Hyde\Markdown\Models\Markdown;
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
 use Melasistema\HydeLayoutsManager\Layouts\LayoutManager;
-use Melasistema\HydeLayoutsManager\Pages\LayoutsManagerMarkdownPage;
 
 /**
  * HydeLayoutsManagerServiceProvider
@@ -54,11 +52,6 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
                 ListLayoutsCommand::class,  // Register the ListLayoutsCommand to list available layouts
             ]);
         }
-
-        // Register the custom Markdown page class into the container
-        $this->app->bind(LayoutsManagerMarkdownPage::class, function ($app) {
-            return new LayoutsManagerMarkdownPage();  // Resolve your custom page class
-        });
     }
 
     /**
@@ -73,18 +66,11 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
     {
         // Register the package's views so they can be used within the application
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hyde-layouts-manager');
-
         // Publish the package's assets (views, configuration, Tailwind config) to the application
         $this->publishAssets();
 
-        // Hook into Hyde's Markdown rendering to parse components using your custom class
-        $this->app->afterResolving(Markdown::class, function ($markdown) {
-            $markdown->setPostProcessor(function ($content) {
-                // Use your CustomMarkdownPage class to handle the content parsing
-                $customPage = app(LayoutsManagerMarkdownPage::class);  // Resolves your custom class from the container
-                return $customPage->markdown()->body;  // Access processed content
-            });
-        });
+        // Register the custom LayoutsManagerMarkdownPage class
+        /*HydeKernel::getInstance()->registerPageClass(LayoutsManagerMarkdownPage::class);*/
 
     }
 
