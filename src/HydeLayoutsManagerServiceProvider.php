@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager;
+
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
+use Melasistema\HydeLayoutsManager\Console\Commands\MergeTailwindConfigCommand;
 use Melasistema\HydeLayoutsManager\Layouts\LayoutManager;
 
 /**
@@ -43,6 +45,7 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ListLayoutsCommand::class,  // Register the ListLayoutsCommand to list available layouts
+                MergeTailwindConfigCommand::class, // Register the MergeTailwindConfigCommand to merge Tailwind configurations
             ]);
         }
 
@@ -68,6 +71,24 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hyde-layouts-manager');
         // Publish the package's assets (views, configuration, Tailwind config) to the application
         $this->publishAssets();
+    }
+
+    /**
+     * Load views from the active theme.
+     *
+     * @return void
+     */
+    protected function loadThemeViews(): void
+    {
+        $theme = config('hyde-layouts-manager.default_layout');
+        if ($theme === 'hyde') {
+            // Load views from Hyde's default location
+            $this->loadViewsFrom(resource_path('views/vendor/hyde'), 'hyde');
+        } else {
+            // Load views from the custom layout theme
+            $themeLayoutsPath = __DIR__ . '/../resources/views/' . $theme;
+            $this->loadViewsFrom($themeLayoutsPath, 'hyde-layouts-manager');
+        }
     }
 
     /**

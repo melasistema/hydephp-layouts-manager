@@ -21,22 +21,31 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Default Theme Layout
+    |--------------------------------------------------------------------------
+    |
+    | This is the default layout theme used across the site. You can set this to
+    | either 'hyde' for the default Hyde layout or any layout in your package's available layouts.
+    |
+    */
+    'default_layout' => 'hyde',  // 'hyde' to use the default Hyde layout, or a custom layout like 'melasistema'
+
+    /*
+    |--------------------------------------------------------------------------
     | Layout Definitions
     |--------------------------------------------------------------------------
     |
-    | The 'layouts' array allows you to define and configure different layout templates.
-    | Each layout has a key (e.g., 'melasistema') that maps to a corresponding view file.
-    | You can add custom layouts by adding new keys and views as necessary.
-    |
-    | Example:
-    | 'custom' => [
-    |     'app' => 'vendor.hyde-layouts-manager.layouts.custom',
-    | ]
+    | You can define custom layouts for each theme. Each theme can have multiple layouts.
+    | You can override default views from this file.
     |
     */
     'layouts' => [
+        'hyde' => [
+            'app' => 'hyde::layouts.app', // Use Hyde's default layout view
+        ],
+
         'melasistema' => [
-            'app' => 'vendor.hyde-layouts-manager.layouts.app',  // The default layout view
+            'app' => 'vendor.hyde-layouts-manager.layouts.melasistema.app', // The custom layout view
         ],
     ],
 
@@ -45,40 +54,22 @@ return [
     | Component Definitions
     |--------------------------------------------------------------------------
     |
-    | The 'components' array defines reusable components, such as the Hero component.
-    | Each component can have a view path and optional default values for attributes.
-    | The defaults can be overridden in the Blade templates when rendering the component.
-    |
-    | Example:
-    | 'hero' => [
-    |     'view' => 'vendor.hyde-layouts-manager.components.hero',
-    |     'default' => [
-    |         'bgColor' => 'bg-blue-500',
-    |         'title' => 'My Custom Hero',
-    |     ],
-    | ]
+    | Define reusable components for layouts.
     |
     */
     'components' => [
         'hero' => [
-            'view' => 'vendor.hyde-layouts-manager.components.hero',  // Path to the hero component view
+            'view' => 'vendor.hyde-layouts-manager.components.hero',
             'default' => [
-                'bgColor' => 'bg-indigo-500',        // Default background color (light mode)
-                'darkBgColor' => 'dark:bg-gray-900', // Dark mode background color
-                'textColor' => 'text-white',         // Default text color (light mode)
-                'darkTextColor' => 'dark:text-white', // Dark mode text color
-                'title' => 'Default Title',          // Default title text
-                'description' => 'Default description for the hero component.', // Default description text
-                'align' => 'center',                 // Default text alignment: 'left', 'center', or 'right'
+                'bgColor' => 'bg-indigo-500',
+                'darkBgColor' => 'dark:bg-gray-900',
+                'textColor' => 'text-white',
+                'darkTextColor' => 'dark:text-white',
+                'title' => 'Default Title',
+                'description' => 'Default description for the hero component.',
+                'align' => 'center',
             ],
         ],
-        // Additional components can follow this structure
-        // 'tooltip' => [
-        //     'view' => 'vendor.hyde-layouts-manager.components.tooltip',
-        //     'default' => [
-        //         'tooltipText' => 'Default tooltip text',
-        //         'tooltipPosition' => 'top',
-        //     ],
-        // ],
     ],
 ];
+

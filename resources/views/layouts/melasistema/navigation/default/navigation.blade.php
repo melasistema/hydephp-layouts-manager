@@ -4,7 +4,7 @@
 
 <nav aria-label="Main navigation" id="main-navigation" class="flex flex-wrap items-center justify-between p-4 shadow-lg sm:shadow-xl md:shadow-none dark:bg-gray-800">
     <div class="flex flex-grow items-center flex-shrink-0 text-gray-700 dark:text-gray-200">
-        @include('hyde-layouts-manager::components.navigation.default.navigation-brand')
+        @include('hyde-layouts-manager::layouts.melasistema.navigation.default.navigation-brand')
 
         <div class="ml-auto">
             <x-hyde::navigation.theme-toggle-button/>
@@ -39,7 +39,7 @@
                     @if($item instanceof \Hyde\Framework\Features\Navigation\DropdownNavItem)
                         <x-hyde::navigation.dropdown :label="\Hyde\Hyde::makeTitle($item->label)" :items="$item->items"/>
                     @else
-                        @include('hyde-layouts-manager::components.navigation.default.navigation-link')
+                        @include('hyde-layouts-manager::layouts.melasistema.navigation.default.navigation-link')
                     @endif
                 </li>
             @endforeach

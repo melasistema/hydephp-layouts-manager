@@ -15,10 +15,18 @@ class LayoutManager
         $this->viewFactory = $viewFactory;
     }
 
-    public  function listLayouts(): array
+    public function listLayouts(): array
     {
+        // Get the layouts configuration from the package's config file
+        $layouts = config('hyde-layouts-manager.layouts', []);
 
-        return '(TODO) layouts available here!';
+        // If no layouts are found, return an empty array
+        if (empty($layouts)) {
+            return [];
+        }
+
+        // Return the list of layouts, in this case, the names and paths
+        return $layouts;
     }
 
     /**
@@ -43,5 +51,27 @@ class LayoutManager
         }
 
         return null;
+    }
+
+    /**
+     * Load the view for the active layout.
+     *
+     * @param string|null $layout
+     * @return string
+     */
+    public function loadLayoutView(string $layout = null): string
+    {
+        // Default to the config value if layout is not passed
+        $layout = $layout ?: config('hyde-layouts-manager.default_layout', 'hyde');
+
+        // Check if the layout exists in the configurations
+        $layouts = config('hyde-layouts-manager.layouts', []);
+        if (isset($layouts[$layout])) {
+            // Return the layout view path
+            return $layouts[$layout]['app'] ?? '';
+        }
+
+        // Return an empty string if the layout is not found
+        return '';
     }
 }

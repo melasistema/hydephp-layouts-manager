@@ -9,7 +9,7 @@
             @isset($items)
                 @foreach ($items as $item)
                     <li class="whitespace-nowrap">
-                        @include('hyde-layouts-manager::components.navigation.default.navigation-link')
+                        @include('hyde-layouts-manager::layouts.melasistema.navigation.default.navigation-link')
                     </li>
                 @endforeach
             @else

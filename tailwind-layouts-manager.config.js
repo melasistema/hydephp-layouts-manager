@@ -7,7 +7,8 @@
  * @license MIT License
  *
  * To include this configuration in your project's `tailwind.config.js`,
- * you need to require and merge it with your existing configuration.
+ * you need to require and merge it with your existing configuration or
+ * use the command from the package `tailwind:merge`.
  *
  * Example usage in `tailwind.config.js`:
  *
@@ -26,6 +27,8 @@
  * };
 **/
 
+
+
 module.exports = {
     darkMode: 'class',
     content: [
@@ -34,4 +37,5 @@ module.exports = {
     theme: {
         extend: {},
     },
+    plugins: [],
 };
