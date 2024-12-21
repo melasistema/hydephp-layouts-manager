@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager;
-
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
 use Melasistema\HydeLayoutsManager\Layouts\LayoutManager;
@@ -40,18 +39,19 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         // Merge the package's default configuration file with the application's configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/hyde-layouts-manager.php', 'hyde-layouts-manager');
 
-        // Bind the LayoutManager to the service container as a singleton
-        // It resolves the LayoutManager with the ViewFactory dependency.
-        $this->app->singleton('layout.manager', function ($app) {
-            return new LayoutManager($app['view']);
-        });
-
         // Register custom Artisan commands if the application is running in the console
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ListLayoutsCommand::class,  // Register the ListLayoutsCommand to list available layouts
             ]);
         }
+
+        // Bind the LayoutManager to the service container as a singleton
+        // It resolves the LayoutManager with the ViewFactory dependency.
+        $this->app->singleton('layout.manager', function ($app) {
+            return new LayoutManager($app['view']);
+        });
+
     }
 
     /**
@@ -68,10 +68,6 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hyde-layouts-manager');
         // Publish the package's assets (views, configuration, Tailwind config) to the application
         $this->publishAssets();
-
-        // Register the custom LayoutsManagerMarkdownPage class
-        /*HydeKernel::getInstance()->registerPageClass(LayoutsManagerMarkdownPage::class);*/
-
     }
 
     /**
@@ -96,6 +92,4 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
             __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
         ], 'hyde-layouts-manager-assets');
     }
-
-
 }
