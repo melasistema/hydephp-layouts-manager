@@ -33,6 +33,8 @@ module.exports = {
     darkMode: 'class',
     content: [
         './vendor/melasistema/hyde-layouts-manager/resources/views/**/*.blade.php',
+        './vendor/melasistema/hyde-layouts-manager/resources/assets/**/*.css', // Include your package css assets
+        './vendor/melasistema/hyde-layouts-manager/resources/assets/**/*.js', // Include your package js assets
     ],
     theme: {
         extend: {},

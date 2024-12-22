@@ -111,6 +111,11 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
 
             // Publish the Tailwind configuration file for further customization
             __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
+
+            // Publish the assets to the application's resources directory
+            __DIR__.'/../resources/assets' => base_path('resources/assets/vendor/melasistema'),
+
         ], 'hyde-layouts-manager-assets');
+
     }
 }

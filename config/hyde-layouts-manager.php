@@ -46,6 +46,8 @@ return [
 
         'melasistema' => [
             'app' => 'vendor.hyde-layouts-manager.layouts.melasistema.app', // The custom layout view
+            'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css', // Use a vendor namespace for the CSS file
+            'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js', // Use a vendor namespace for the JS file
         ],
     ],
 
