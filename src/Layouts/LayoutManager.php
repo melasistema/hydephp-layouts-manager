@@ -6,6 +6,23 @@ namespace Melasistema\HydeLayoutsManager\Layouts;
 
 use Illuminate\View\Factory as ViewFactory;
 
+/**
+ * LayoutManager
+ *
+ * This class is responsible for managing layouts, including rendering components and loading layout views.
+ * It provides functions to interact with the layout configuration and render associated components.
+ *
+ * Key methods:
+ * - listLayouts(): Returns an array of registered layouts.
+ * - renderComponent(): Renders a component with a given name and attributes, using the specified view and default data.
+ * - loadLayoutView(): Loads the view for the active layout based on configuration, or returns an empty string if not found.
+ *
+ * @package Melasistema\HydeLayoutsManager
+ * @author  Luca Visciola
+ * @copyright 2024 Luca Visciola
+ * @license MIT License
+ */
+
 class LayoutManager
 {
     protected ViewFactory $viewFactory;
@@ -15,6 +32,11 @@ class LayoutManager
         $this->viewFactory = $viewFactory;
     }
 
+    /**
+     * List the available layouts from the configuration.
+     *
+     * @return array
+     */
     public function listLayouts(): array
     {
         // Get the layouts configuration from the package's config file
