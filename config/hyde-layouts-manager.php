@@ -28,7 +28,7 @@ return [
     | either 'hyde' for the default Hyde layout or any layout in your package's available layouts.
     |
     */
-    'default_layout' => 'hyde',  // 'hyde' to use the default Hyde layout, or a custom layout like 'melasistema'
+    'default_layout' => 'melasistema',  // 'hyde' to use the default Hyde layout, or a custom layout like 'melasistema'
 
     /*
     |--------------------------------------------------------------------------
@@ -46,8 +46,8 @@ return [
 
         'melasistema' => [
             'app' => 'vendor.hyde-layouts-manager.layouts.melasistema.app', // The custom layout view
-            'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css', // Use a vendor namespace for the CSS file
-            'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js', // Use a vendor namespace for the JS file
+            'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css', // The CSS for this layout
+            'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js', // The JS for this layout
         ],
     ],
 
@@ -63,13 +63,58 @@ return [
         'hero' => [
             'view' => 'vendor.hyde-layouts-manager.components.hero',
             'default' => [
-                'bgColor' => 'bg-indigo-500',
+                'bgColor' => 'bg-white',
                 'darkBgColor' => 'dark:bg-gray-900',
-                'textColor' => 'text-white',
+                'textColor' => 'text-gray-900',
                 'darkTextColor' => 'dark:text-white',
-                'title' => 'Default Title',
-                'description' => 'Default description for the hero component.',
+                'title' => 'HydePHP Layouts Manager',
+                'description' => 'Manage your layouts and reusable components with ease.',
                 'align' => 'center',
+                'primaryButton' => [
+                    'text' => 'Learn More',
+                    'link' => 'https://github.com/melasistema/hydephp-layouts-manager',
+                    'bgColor' => 'bg-blue-700',
+                    'textColor' => 'text-white',
+                    'darkBgColor' => 'dark:bg-gray-900',
+                    'darkTextColor' => 'dark:text-white',
+                ],
+                'secondaryButton' => [
+                    'text' => 'About Me',
+                    'link' => 'https://github.com/melasistema',
+                    'bgColor' => 'bg-white',
+                    'textColor' => 'text-indigo-500',
+                    'darkBgColor' => 'dark:bg-gray-900',
+                    'darkTextColor' => 'dark:text-white',
+                ],
+            ],
+        ],
+        'accordion' => [
+            'view' => 'vendor.hyde-layouts-manager.components.accordion',
+            'default' => [
+                'bgColor' => 'bg-gray-500',          // Default background color
+                'darkBgColor' => 'dark:bg-gray-900',  // Default dark mode background color
+                'textColor' => 'text-white',          // Default text color
+                'darkTextColor' => 'dark:text-white', // Default dark mode text color
+                'items' => [                          // Default accordion items
+                    [
+                        'title' => 'Item 1',
+                        'description' => 'Content for the first item of the accordion.',
+                        'link' => 'https://melasistema.com',
+                    ],
+                ],
+            ],
+        ],
+        'carousel' => [
+            'view' => 'vendor.hyde-layouts-manager.components.carousel',
+            'default' => [
+                'title' => '',
+                'images' => [
+                    '_media/carousel/example/carousel-1.svg',
+                    '_media/carousel/example/carousel-2.svg',
+                    '_media/carousel/example/carousel-3.svg',
+                    '_media/carousel/example/carousel-4.svg',
+                    '_media/carousel/example/carousel-5.svg',
+                ],
             ],
         ],
     ],

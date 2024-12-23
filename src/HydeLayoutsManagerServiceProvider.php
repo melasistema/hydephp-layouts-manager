@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
+use Melasistema\HydeLayoutsManager\Console\Commands\MergePackageJsonCommand;
 use Melasistema\HydeLayoutsManager\Console\Commands\MergeTailwindConfigCommand;
 use Melasistema\HydeLayoutsManager\Layouts\LayoutManager;
 
@@ -46,6 +48,7 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
             $this->commands([
                 ListLayoutsCommand::class,  // Register the ListLayoutsCommand to list available layouts
                 MergeTailwindConfigCommand::class, // Register the MergeTailwindConfigCommand to merge Tailwind configurations
+                MergePackageJsonCommand::class, // Register the MergePackageJsonCommand to merge package.json dependencies
             ]);
         }
 
@@ -113,9 +116,10 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
             __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
 
             // Publish the assets to the application's resources directory
-            __DIR__.'/../resources/assets' => base_path('resources/assets/vendor/melasistema'),
+            __DIR__.'/../resources/assets' => resource_path('assets/vendor/hyde-layouts-manager'),
+
+            __DIR__ . '/../package.json' => base_path('package-hyde-layouts-manager.json'),
 
         ], 'hyde-layouts-manager-assets');
-
     }
 }

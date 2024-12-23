@@ -785,16 +785,16 @@
         },
         {
             "name": "hyde/framework",
-            "version": "v1.7.3",
+            "version": "v1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hydephp/framework.git",
-                "reference": "d5b2f5c547d44f83e39bc6e58c130af3b3f618e8"
+                "reference": "9edb22726147a9a6e5831b7d48e04d929f31436c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hydephp/framework/zipball/d5b2f5c547d44f83e39bc6e58c130af3b3f618e8",
-                "reference": "d5b2f5c547d44f83e39bc6e58c130af3b3f618e8",
+                "url": "https://api.github.com/repos/hydephp/framework/zipball/9edb22726147a9a6e5831b7d48e04d929f31436c",
+                "reference": "9edb22726147a9a6e5831b7d48e04d929f31436c",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
             "description": "The HydePHP Framework",
             "support": {
                 "issues": "https://github.com/hydephp/framework/issues",
-                "source": "https://github.com/hydephp/framework/tree/v1.7.3"
+                "source": "https://github.com/hydephp/framework/tree/v1.7.5"
             },
             "funding": [
                 {
@@ -845,7 +845,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-07-23T18:50:21+00:00"
+            "time": "2024-12-22T11:28:50+00:00"
         },
         {
             "name": "illuminate/bus",
@@ -1976,10 +1976,6 @@
             ],
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev",
-                    "dev-2.x": "2.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Carbon\\Laravel\\ServiceProvider"
@@ -1989,6 +1985,10 @@
                     "includes": [
                         "extension.neon"
                     ]
+                },
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev",
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {

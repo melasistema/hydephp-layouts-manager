@@ -27,7 +27,9 @@
  * };
 **/
 
-
+/**
+ * TODO Add Flowbite as a plugin
+ */
 
 module.exports = {
     darkMode: 'class',
@@ -39,5 +41,7 @@ module.exports = {
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        require('flowbite'),
+    ],
 };

@@ -71,14 +71,14 @@ module.exports = {
 
 **Automate Tailwind Merge with Command:**
 
-The `merge:tailwind` command helps automate the process of replacing your project's tailwind.config.js file with the default configuration from HydeLayoutsManager.
+The `tailwind:merge` command helps automate the process of replacing your project's tailwind.config.js file with the default configuration from HydeLayoutsManager.
 
 **Warning:** This will overwrite your existing tailwind.config.js. Back up your file if you have customizations.
 
 Run the command:
 
 ```bash
-php hyde merge:tailwind
+php hyde tailwind:merge
 ```
 
 

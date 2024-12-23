@@ -7,7 +7,7 @@
 @endif
 
 {{-- App Meta Tags --}}
-{{--@include('hyde::layouts.meta')--}}
+@include('hyde-layouts-manager::layouts.melasistema.meta')
 
 {{-- App Stylesheets --}}
 @include('hyde-layouts-manager::layouts.melasistema.styles')

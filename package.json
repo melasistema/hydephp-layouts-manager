@@ -1,0 +1,8 @@
+{
+  "name": "hyde-layouts-manager-assets",
+  "version": "0.0.1",
+  "description": "Assets for the Hyde Layouts Manager package.",
+  "dependencies": {
+    "flowbite": "^2.5.2"
+  }
+}
