@@ -1,6 +1,6 @@
 <!--
 |--------------------------------------------------------------------------
-| Hero Component
+| Accordion Component
 |--------------------------------------------------------------------------
 | This is the Accordion component file for the Hyde Layouts Manager package.
 | File Path: resources/views/components/accordion.blade.php
@@ -18,7 +18,7 @@
 |   or overridden during usage.
 |
 | Flowbite:
-| - The component uses **Flowbite**, a Tailwind CSS component library, to implement the carousel functionality and design.
+| - The component uses **Flowbite** https://flowbite.com, a Tailwind CSS component library, to implement the carousel functionality and design.
 | - Make sure Flowbite is properly integrated into your project to ensure correct rendering of the carousel and its controls.
 |
 | @package    Melasistema\HydeLayoutsManager

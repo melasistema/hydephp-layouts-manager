@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager;
 
-use Illuminate\Support\Facades\View;
+use Hyde\Pages\MarkdownPage;
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
 use Melasistema\HydeLayoutsManager\Console\Commands\MergePackageJsonCommand;
@@ -74,6 +74,11 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hyde-layouts-manager');
         // Publish the package's assets (views, configuration, Tailwind config) to the application
         $this->publishAssets();
+
+        // Dynamically set the template for MarkdownPage based on HydePHP Layouts Manager configuration
+        $defaultLayout = config('hyde-layouts-manager.default_layout', 'hyde');
+        $layouts = config('hyde-layouts-manager.layouts');
+        MarkdownPage::$template = $layouts[$defaultLayout]['app'] ?? 'hyde::layouts.app';
     }
 
     /**
@@ -105,21 +110,53 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
      */
     protected function publishAssets(): void
     {
+
         $this->publishes([
             // Publish the configuration file to the application's config directory
             __DIR__ . '/../config/hyde-layouts-manager.php' => config_path('hyde-layouts-manager.php'),
+            // Publish the Tailwind configuration file to the application's root directory
+            __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
+            // Publish the package.json to the application's root directory
+            __DIR__ . '/../package.json' => base_path('package-hyde-layouts-manager.json'),
+        ], 'hyde-layouts-manager-config');
+
+        $this->publishes([
+            // Publish the views to the application's views directory
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/hyde-layouts-manager'),
+        ], 'hyde-layouts-manager-views');
+
+        $this->publishes([
+            // Publish the assets to the application's resources directory
+            __DIR__.'/../resources/assets' => resource_path('assets/vendor/hyde-layouts-manager'),
+        ], 'hyde-layouts-manager-assets');
+
+        $this->publishes([
+            // Publish the default component images to the application's _media directory
+            __DIR__.'/../resources/images' => base_path('_media/hyde-layouts-manager'),
+        ], 'hyde-layouts-manager-media');
+
+
+
+        /*$this->publishes([
+
+            // Publish the configuration file to the application's config directory
+            __DIR__ . '/../config/hyde-layouts-manager.php' => config_path('hyde-layouts-manager.php'),
+
+            // Publish the Tailwind configuration file to the application's root directory
+            __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
+
+            // Publish the package.json to the application's root directory
+            __DIR__ . '/../package.json' => base_path('package-hyde-layouts-manager.json'),
 
             // Publish the views to the application's views directory
             __DIR__ . '/../resources/views' => resource_path('views/vendor/hyde-layouts-manager'),
 
-            // Publish the Tailwind configuration file for further customization
-            __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
-
             // Publish the assets to the application's resources directory
             __DIR__.'/../resources/assets' => resource_path('assets/vendor/hyde-layouts-manager'),
 
-            __DIR__ . '/../package.json' => base_path('package-hyde-layouts-manager.json'),
+            // Publish the default component images to the application's _media directory
+            __DIR__.'/../resources/images' => base_path('_media/hyde-layouts-manager'),
 
-        ], 'hyde-layouts-manager-assets');
+        ], 'hyde-layouts-manager-assets');*/
     }
 }

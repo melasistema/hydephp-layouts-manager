@@ -1,3 +1,4 @@
+@props(['attributes' => ''])
 @if(Features::hasDarkmode() && Features::hasThemeToggleButtons())
     <button @click="toggleTheme"
             {{ $attributes->merge(['class' => 'theme-toggle-button flex items-center px-2 py-1 hover:text-gray-700 dark:text-gray-200']) }}
@@ -11,3 +12,4 @@
         </svg>
     </button>
 @endif
+

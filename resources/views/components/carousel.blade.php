@@ -19,7 +19,7 @@
 | - Allows dynamic rendering of carousel slides with default fallback images if none are provided.
 |
 | Flowbite:
-| - The component uses **Flowbite**, a Tailwind CSS component library, to implement the carousel functionality and design.
+| - The component uses **Flowbite** https://flowbite.com, a Tailwind CSS component library, to implement the carousel functionality and design.
 | - Make sure Flowbite is properly integrated into your project to ensure correct rendering of the carousel and its controls.
 |
 | @package    Melasistema\HydeLayoutsManager
