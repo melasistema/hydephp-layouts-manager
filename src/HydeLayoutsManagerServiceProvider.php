@@ -110,7 +110,6 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
      */
     protected function publishAssets(): void
     {
-
         $this->publishes([
             // Publish the configuration file to the application's config directory
             __DIR__ . '/../config/hyde-layouts-manager.php' => config_path('hyde-layouts-manager.php'),
@@ -134,29 +133,5 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
             // Publish the default component images to the application's _media directory
             __DIR__.'/../resources/images' => base_path('_media/hyde-layouts-manager'),
         ], 'hyde-layouts-manager-media');
-
-
-
-        /*$this->publishes([
-
-            // Publish the configuration file to the application's config directory
-            __DIR__ . '/../config/hyde-layouts-manager.php' => config_path('hyde-layouts-manager.php'),
-
-            // Publish the Tailwind configuration file to the application's root directory
-            __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
-
-            // Publish the package.json to the application's root directory
-            __DIR__ . '/../package.json' => base_path('package-hyde-layouts-manager.json'),
-
-            // Publish the views to the application's views directory
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/hyde-layouts-manager'),
-
-            // Publish the assets to the application's resources directory
-            __DIR__.'/../resources/assets' => resource_path('assets/vendor/hyde-layouts-manager'),
-
-            // Publish the default component images to the application's _media directory
-            __DIR__.'/../resources/images' => base_path('_media/hyde-layouts-manager'),
-
-        ], 'hyde-layouts-manager-assets');*/
     }
 }

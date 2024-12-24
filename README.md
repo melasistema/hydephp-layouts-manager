@@ -187,7 +187,7 @@ An example of a custom post page using a layout:
 
 You can list all available layouts and components with the following command:
 
-`php artisan layouts:list`
+`php hyde layouts:list`
 ```
 
 ----------
