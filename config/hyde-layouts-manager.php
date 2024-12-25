@@ -50,6 +50,26 @@ return [
             'post' => 'vendor.hyde-layouts-manager.layouts.melasistema.post', // The MelaSistema Theme posts layout view
             'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css',
             'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js',
+            'footer' => [
+                'view' => 'vendor.hyde-layouts-manager.layouts.melasistema.footer',
+                'default' => [
+                    'bgColor' => 'bg-white',
+                    'darkBgColor' => 'dark:bg-gray-800',
+                    'textColor' => 'text-gray-900',
+                    'darkTextColor' => 'dark:text-white',
+                    'description' => 'Manage your layouts and reusable components with ease.',
+                    'links' => [
+                        [
+                            'title' => 'GitHub',
+                            'url' => 'https://github.com/melasistema/hydephp-layouts-manager',
+                        ],
+                        [
+                            'title' => 'About Me',
+                            'url' => 'https://github.com/melasistema',
+                        ],
+                    ],
+                ],
+            ]
         ],
         //'your-custom-theme' => [
         //'app' => 'vendor.your-custom-theme.layouts.melasistema.app', // The MelaSistema Theme layout view
