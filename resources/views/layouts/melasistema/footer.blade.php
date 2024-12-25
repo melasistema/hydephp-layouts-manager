@@ -4,7 +4,7 @@
             <a href="{{ route('index') }}" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
                 <img src="{{ asset('hyde-layouts-manager/logo/hydephp-logo.svg') }}" class="h-8" alt="HydePHP Layouts Manager">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                    {{ config('hyde.name', 'HydePHP Layouts Manager') }}
+                    {{ config('hyde.name', 'HydePHP Layouts Manager') }} - Layouts Manager
                 </span>
             </a>
             <p class="my-6 text-gray-500 dark:text-gray-400">{{ config('hyde-layouts-manager.layouts.melasistema.footer.default.description') }}</p>

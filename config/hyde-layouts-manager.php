@@ -180,7 +180,18 @@ return [
                     [
                         'title' => '🚀 Ready to Get Started?',
                         'description' => '
-                             Download Hyde Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
+                             Download Hyde Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
+                        '
+                    ],
+                    [
+                        'title' => '✨ Credits',
+                        'description' => '
+                             Hyde Layouts Manager is built with the help of many amazing tools and frameworks:
+                            <ul>
+                              <li><strong>HydePHP:</strong> A modern PHP static site generator. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://hydephp.github.io/" target="_blank">Explore HydePHP →</a></li>
+                              <li><strong>Flowbite:</strong> A library for beautiful, accessible UI components. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://flowbite.com/" target="_blank">Explore Flowbite →</a></li>
+                            </ul>
+                            Special thanks to the open-source community for their contributions!
                         '
                     ],
                 ],
