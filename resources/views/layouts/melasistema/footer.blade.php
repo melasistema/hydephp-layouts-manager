@@ -2,7 +2,7 @@
     <footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
         <div class="mx-auto max-w-screen-xl text-center">
             <a href="{{ route('index') }}" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
-                <img src="{{ asset('hyde-layouts-manager/logo/logo.svg') }}" class="h-8" alt="HydePHP Layouts Manager">
+                <img src="{{ asset('hyde-layouts-manager/logo/hydephp-logo.svg') }}" class="h-8" alt="HydePHP Layouts Manager">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                     {{ config('hyde.name', 'HydePHP Layouts Manager') }}
                 </span>

@@ -38,30 +38,67 @@
     'align' => 'center',
     'items' => [
         [
-            'title' => 'Item 1',
-            'description' => 'Content for the first item of the accordion.',
-            'link' => 'https://melasistema.com',
+            'title' => '🚀 What is Hyde Layouts Manager?',
+            'description' => 'HydeLayoutsManager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
+        ],
+        [
+            'title' => '🌟 Why Use Hyde Layouts Manager?',
+            'description' => '
+                <ul>
+                  <li><strong>Dynamic Layouts:</strong> Quickly switch and manage layouts across your site.</li>
+                  <li><strong>Reusable Components:</strong> Save time by creating modular components with default attributes.</li>
+                  <li><strong>Easy Integration:</strong> Works seamlessly with HydePHP.</li>
+                  <li><strong>CLI Tools:</strong> Automate tasks like listing layouts, merging Tailwind configurations and more.</li>
+                </ul>
+                <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager/README.md" target="_blank">Learn more and get started →</a></strong>
+            '
+        ],
+        [
+            'title' => '🎯 Who Is It For?',
+            'description' => '
+                Hyde Layouts Manager is perfect for:
+                <ul>
+                  <li>Developers building blogs, portfolios, or complex sites with HydePHP.</li>
+                  <li>Laravel users looking for better layout and component management.</li>
+                  <li>Teams seeking clean, maintainable design workflows. It\'s already including a Theme and few <a href="https://flowbite.com/" target="_blank">Flowbite</a> open source components.</li>
+                </ul>
+                <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">See examples and contribute →</a></strong>
+            '
+        ],
+        [
+            'title' => '💡 Key Benefits',
+            'description' => '
+                <ul>
+                  <li><strong>Centralized Configuration:</strong> Manage all layouts and components from one file.</li>
+                  <li><strong>Flexible Defaults:</strong> Override default attributes easily in Blade templates.</li>
+                  <li><strong>Improved Workflow:</strong> Save time with built-in tools and reusable designs.</li>
+                </ul>
+                <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Try it for yourself →</a></strong>
+            '
+        ],
+        [
+            'title' => '🚀 Ready to Get Started?',
+            'description' => '
+                 Download Hyde Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
+            '
         ],
     ],
 ])
 
-<div id="accordion-collapse" data-accordion="collapse" data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white">
+<div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+
     @foreach ($items as $key => $item)
-        <h2 id="accordion-collapse-heading-{{ $key }}">
-            <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-                    data-accordion-target="#accordion-collapse-body-{{ $key }}" aria-expanded="true" aria-controls="accordion-collapse-body-{{ $key }}">
+        <h2 id="accordion-flush-heading-{{ $key }}">
+            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-{{ $key }}" aria-expanded="true" aria-controls="accordion-flush-body-{{ $key }}">
                 <span>{{ $item['title'] }}</span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                 </svg>
             </button>
         </h2>
-        <div id="accordion-collapse-body-{{ $key }}" class="hidden" aria-labelledby="accordion-collapse-heading-{{ $key }}">
-            <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">{{ $item['description'] }}</p>
-                @isset($item['link'])
-                    <p class="text-gray-500 dark:text-gray-400">Check out the <a href="{{ $item['link'] }}" class="text-blue-600 dark:text-blue-500 hover:underline">link</a></p>
-                @endisset
+        <div id="accordion-flush-body-{{ $key }}" class="hidden" aria-labelledby="accordion-flush-heading-{{ $key }}">
+            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                <p class="mb-2 text-gray-500 dark:text-gray-400">{!! $item['description']  !!}</p>
             </div>
         </div>
     @endforeach

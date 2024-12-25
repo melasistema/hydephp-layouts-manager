@@ -51,6 +51,13 @@ return [
             'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css',
             'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js',
             'navigation' => [
+                'brand' => [
+                    'type' => 'custom', // accepted values: "image" "text" "custom"
+                    'url' => '/',
+                    'lightLogo'  => 'media/hyde-layouts-manager/logo/nav-logo.png',
+                    'darkLogo'  => 'media/hyde-layouts-manager/logo/nav-logo-dark.png',
+                    'logoHeight' => 'h-10',
+                ],
                 'cta' => [
                     'text' => 'Get Started',
                     'url' => 'https://github.com/melasistema/hydephp-layouts-manager',
@@ -99,6 +106,7 @@ return [
             'default' => [
                 'bgColor' => 'bg-white',
                 'darkBgColor' => 'dark:bg-gray-900',
+                'padding' => 'py-16',
                 'textColor' => 'text-gray-900',
                 'darkTextColor' => 'dark:text-white',
                 'title' => 'HydePHP Layouts Manager',
@@ -131,9 +139,49 @@ return [
                 'darkTextColor' => 'dark:text-white', // Default dark mode text color
                 'items' => [                          // Default accordion items
                     [
-                        'title' => 'Item 1',
-                        'description' => 'Content for the first item of the accordion.',
-                        'link' => 'https://github.com/melasistema/hydephp-layouts-manager',
+                        'title' => '🚀 What is Hyde Layouts Manager?',
+                        'description' => 'HydeLayoutsManager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. It\'s already available a template and some components using <a href="https://flowbite.com" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
+                    ],
+                    [
+                        'title' => '🌟 Why Use Hyde Layouts Manager?',
+                        'description' => '
+                            <ul>
+                              <li><strong>Dynamic Layouts:</strong> Quickly switch and manage layouts across your site.</li>
+                              <li><strong>Reusable Components:</strong> Save time by creating modular components with default attributes.</li>
+                              <li><strong>Easy Integration:</strong> Works seamlessly with HydePHP.</li>
+                              <li><strong>CLI Tools:</strong> Automate tasks like listing layouts, merging Tailwind configurations and more.</li>
+                            </ul>
+                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager/README.md" target="_blank">Learn more and get started →</a></strong>
+                        '
+                    ],
+                    [
+                        'title' => '🎯 Who Is It For?',
+                        'description' => '
+                            Hyde Layouts Manager is perfect for:
+                            <ul>
+                              <li>Developers building blogs, portfolios, or complex sites with HydePHP.</li>
+                              <li>Laravel users looking for better layout and component management.</li>
+                              <li>Teams seeking clean, maintainable design workflows. It\'s already including a Theme and few <a href="https://flowbite.com/" target="_blank">Flowbite</a> open source components.</li>
+                            </ul>
+                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">See examples and contribute →</a></strong>
+                        '
+                    ],
+                    [
+                        'title' => '💡 Key Benefits',
+                        'description' => '
+                            <ul>
+                              <li><strong>Centralized Configuration:</strong> Manage all layouts and components from one file.</li>
+                              <li><strong>Flexible Defaults:</strong> Override default attributes easily in Blade templates.</li>
+                              <li><strong>Improved Workflow:</strong> Save time with built-in tools and reusable designs.</li>
+                            </ul>
+                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Try it for yourself →</a></strong>
+                        '
+                    ],
+                    [
+                        'title' => '🚀 Ready to Get Started?',
+                        'description' => '
+                             Download Hyde Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
+                        '
                     ],
                 ],
             ],
@@ -143,7 +191,7 @@ return [
             'default' => [
                 'title' => '',
                 'images' => [
-                    'media/hyde-layouts-manager/carousel/example/carousel-1.png',
+                    'media/hyde-layouts-manager/carousel/example/carousel-1.svg',
                     'media/hyde-layouts-manager/carousel/example/carousel-2.svg',
                     'media/hyde-layouts-manager/carousel/example/carousel-3.svg',
                     'media/hyde-layouts-manager/carousel/example/carousel-4.svg',

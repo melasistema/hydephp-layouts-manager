@@ -2,10 +2,11 @@
     /** @var \Hyde\Pages\MarkdownPost $page  */
     /** @var \Hyde\Framework\Features\Blogging\Models\FeaturedImage $image  */
     $image = $post->image ?? $page->image;
-    $maxWidth = isset($post->image) ? 'w-96' : '';
+    $baseWidth = 'w-full'; // Default width
+    $desktopWidth = isset($post->image) ? 'md:w-96' : ''; // Apply md:w-96 conditionally
 @endphp
-<figure class="{{ $maxWidth }}" aria-label="Cover image" itemprop="image" itemscope itemtype="https://schema.org/ImageObject" role="doc-cover">
-    <img src="{{ $image->getSource() }}" alt="{{ $image->getAltText() ?? '' }}" title="{{ $image->getTitleText() ?? '' }}" itemprop="image" class="mb-0 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg">
+<figure class="{{ $baseWidth }} {{ $desktopWidth }}" aria-label="Cover image" itemprop="image" itemscope itemtype="https://schema.org/ImageObject" role="doc-cover">
+    <img src="{{ $image->getSource() }}" alt="{{ $image->getAltText() ?? '' }}" title="{{ $image->getTitleText() ?? '' }}" itemprop="image" class="mb-0 object-cover w-full rounded-t-lg md:h-auto md:rounded-none md:rounded-s-lg">
     <figcaption aria-label="Image caption" itemprop="caption">
         @if($image->hasAuthorName())
             <span>Image by</span>

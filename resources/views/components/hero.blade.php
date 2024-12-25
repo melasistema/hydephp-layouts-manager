@@ -35,6 +35,9 @@
     // Default dark background color fallback in case no value is passed.
     'darkBgColor' => 'dark:bg-gray-900',
 
+    // Default padding fallback in case no value is passed.
+    'padding' => 'py-16',
+
     // Default text color fallback for proper contrast and readability.
     'textColor' => 'text-gray-900',
 
@@ -71,7 +74,7 @@
     ],
 ])
 
-<section class="{{ $bgColor }} {{ $darkBgColor }}">
+<section class="{{ $bgColor }} {{ $darkBgColor }} {{ $padding }}">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-{{ $align }} lg:py-16">
         <!-- Hero Title -->
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
