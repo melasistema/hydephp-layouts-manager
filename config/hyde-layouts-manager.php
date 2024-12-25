@@ -50,6 +50,13 @@ return [
             'post' => 'vendor.hyde-layouts-manager.layouts.melasistema.post', // The MelaSistema Theme posts layout view
             'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css',
             'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js',
+            'navigation' => [
+                'cta' => [
+                    'text' => 'Get Started',
+                    'url' => 'https://github.com/melasistema/hydephp-layouts-manager',
+                    'urlTarget' => '_blank',
+                ]
+            ],
             'footer' => [
                 'view' => 'vendor.hyde-layouts-manager.layouts.melasistema.footer',
                 'default' => [
