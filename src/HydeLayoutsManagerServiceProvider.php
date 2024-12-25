@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Melasistema\HydeLayoutsManager;
 
 use Hyde\Pages\MarkdownPage;
+use Hyde\Pages\MarkdownPost;
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
 use Melasistema\HydeLayoutsManager\Console\Commands\MergePackageJsonCommand;
@@ -70,7 +71,7 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Register the package's views so they can be used within the application
+        // Register the package's views, so they can be used within the application
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hyde-layouts-manager');
         // Publish the package's assets (views, configuration, Tailwind config) to the application
         $this->publishAssets();
@@ -78,7 +79,8 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         // Dynamically set the template for MarkdownPage based on HydePHP Layouts Manager configuration
         $defaultLayout = config('hyde-layouts-manager.default_layout', 'hyde');
         $layouts = config('hyde-layouts-manager.layouts');
-        MarkdownPage::$template = $layouts[$defaultLayout]['app'] ?? 'hyde::layouts.app';
+        MarkdownPage::$template = $layouts[$defaultLayout]['page'] ?? 'hyde::layouts.page';
+        MarkdownPost::$template = $layouts[$defaultLayout]['post'] ?? 'hyde::layouts.post';
     }
 
     /**

@@ -25,7 +25,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This is the default layout theme used across the site. You can set this to
-    | either 'hyde' for the default Hyde layout or any layout in your package's available layouts.
+    | either 'hyde' for the default Hyde layout or any layout in your package's or project's available layouts.
     |
     */
     'default_layout' => 'melasistema',  // 'hyde' to use the default Hyde layout, or a custom layout like 'melasistema'
@@ -45,10 +45,17 @@ return [
         ],
 
         'melasistema' => [
-            'app' => 'vendor.hyde-layouts-manager.layouts.melasistema.app', // The MelaSistema Theme layout view
+            'app' => 'vendor.hyde-layouts-manager.layouts.melasistema.app', // The MelaSistema Theme base layout view
+            'page' => 'vendor.hyde-layouts-manager.layouts.melasistema.post', // The MelaSistema Theme pages layout view
+            'post' => 'vendor.hyde-layouts-manager.layouts.melasistema.post', // The MelaSistema Theme posts layout view
             'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css',
             'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js',
         ],
+        //'your-custom-theme' => [
+        //'app' => 'vendor.your-custom-theme.layouts.melasistema.app', // The MelaSistema Theme layout view
+        //'styles' => 'vendor/your-custom-theme/css/melasistema/app.css',
+        //'scripts' => 'vendor/your-custom-theme/js/melasistema/app.js',
+        //],
     ],
 
     /*
@@ -56,7 +63,7 @@ return [
     | Component Definitions
     |--------------------------------------------------------------------------
     |
-    | Define reusable components for layouts.
+    | Define reusable components.
     |
     */
     'components' => [
@@ -119,4 +126,3 @@ return [
         ],
     ],
 ];
-
