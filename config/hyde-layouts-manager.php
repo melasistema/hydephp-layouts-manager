@@ -72,7 +72,7 @@ return [
             ]
         ],
         //'your-custom-theme' => [
-        //'app' => 'vendor.your-custom-theme.layouts.melasistema.app', // The MelaSistema Theme layout view
+        //'app' => 'vendor.your-custom-theme.layouts.melasistema.app',
         //'styles' => 'vendor/your-custom-theme/css/melasistema/app.css',
         //'scripts' => 'vendor/your-custom-theme/js/melasistema/app.js',
         //],
