@@ -54,8 +54,8 @@ return [
                 'brand' => [
                     'type' => 'custom', // accepted values: "image" "text" "custom"
                     'url' => '/',
-                    'lightLogo'  => 'media/hyde-layouts-manager/logo/nav-logo.png',
-                    'darkLogo'  => 'media/hyde-layouts-manager/logo/nav-logo-dark.png',
+                    'lightLogo'  => 'media/hyde-layouts-manager/logo/logo-navigation-light.png',
+                    'darkLogo'  => 'media/hyde-layouts-manager/logo/logo-navigation-dark.png',
                     'logoHeight' => 'h-10',
                 ],
                 'cta' => [
