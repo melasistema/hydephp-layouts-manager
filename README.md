@@ -5,6 +5,8 @@
 
 HydePHP Layouts Manager is a powerful package designed to simplify the management of layouts and reusable components in your [HydePHP](https://hydephp.github.io/) projects. It provides an intuitive way to organize and customize themes, layouts, and components, enhancing your workflow while keeping your codebase clean and maintainable.
 
+![HydePHP Layouts Manager](resources/images/mixed/header-melasistema-hydephp.png)
+
 **Check it out:** [HydePHP Layouts Manager](https://hydephp.melasistema.com)
 
 ## 🌟 Features
