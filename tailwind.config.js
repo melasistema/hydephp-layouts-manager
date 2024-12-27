@@ -1,5 +1,5 @@
 /**
- * This is the Merged Tailwind CSS configuration file for the Hyde Layouts Manager package.
+ * This is the Merged Tailwind CSS configuration file for the HydePHP Layouts Manager package.
  *
  * @package Melasistema\HydeLayoutsManager
  * @author  Luca Visciola

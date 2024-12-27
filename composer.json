@@ -1,6 +1,6 @@
 {
     "name": "melasistema/hyde-layouts-manager",
-    "description": "Effortlessly manage and customize layouts in HydePHP. This developer-friendly library enhances HydePHP's modularity, offering seamless integration with TailwindCSS and Laravel ecosystems while providing unparalleled flexibility for customization.",
+    "description": "Effortless HydePHP Layouts and Components Management. HydePHP Layouts Manager is a powerful Composer package that simplifies the way you manage layouts and reusable components within your HydePHP projects.",
     "type": "library",
     "license": "MIT",
     "version": "0.0.1",

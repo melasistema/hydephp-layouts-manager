@@ -1,5 +1,5 @@
 /**
- * This is the Tailwind CSS configuration file for the Hyde Layouts Manager package.
+ * This is the Tailwind CSS configuration file for the HydePHP Layouts Manager package.
  *
  * @package Melasistema\HydeLayoutsManager
  * @author  Luca Visciola
@@ -26,11 +26,6 @@
  *     },
  * };
 **/
-
-/**
- * TODO Add Flowbite as a plugin
- */
-
 module.exports = {
     darkMode: 'class',
     content: [

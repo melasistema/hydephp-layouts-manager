@@ -2,7 +2,7 @@
 |--------------------------------------------------------------------------
 | Base Layout: MelaSistema Theme
 |--------------------------------------------------------------------------
-| This is the base layout file for the MelaSistema theme used in the HydeLayoutsManager package.
+| This is the base layout file for the MelaSistema theme used in the HydePHP Layouts Manager package.
 | File Path: resources/views/layouts/app.blade.php
 |
 | Usage Recommendation:

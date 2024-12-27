@@ -16,7 +16,7 @@ use Melasistema\HydeLayoutsManager\Layouts\LayoutManager;
  * HydeLayoutsManagerServiceProvider
  *
  * This service provider is responsible for registering and bootstrapping all services,
- * views, and commands related to the HydeLayoutsManager package. It handles configuration
+ * views, and commands related to the HydePHP Layouts Manager package. It handles configuration
  * loading, view publishing, and commands registration for the package.
  *
  * Key functions:

@@ -2,7 +2,7 @@
 |--------------------------------------------------------------------------
 | Carousel Component
 |--------------------------------------------------------------------------
-| This is the Carousel component file for the Hyde Layouts Manager package.
+| This is the Carousel component file for the HydePHP Layouts Manager package.
 | File Path: resources/views/components/carousel.blade.php
 |
 | Usage Recommendation:

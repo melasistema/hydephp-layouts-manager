@@ -2,7 +2,7 @@
 |--------------------------------------------------------------------------
 | Accordion Component
 |--------------------------------------------------------------------------
-| This is the Accordion component file for the Hyde Layouts Manager package.
+| This is the Accordion component file for the HydePHP Layouts Manager package.
 | File Path: resources/views/components/accordion.blade.php
 |
 | Usage Recommendation:
@@ -38,11 +38,11 @@
     'align' => 'center',
     'items' => [
         [
-            'title' => '🚀 What is Hyde Layouts Manager?',
-            'description' => 'HydeLayoutsManager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
+            'title' => '🚀 What is HydePHP Layouts Manager?',
+            'description' => 'HydePHP Layouts Manager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
         ],
         [
-            'title' => '🌟 Why Use Hyde Layouts Manager?',
+            'title' => '🌟 Why Use HydePHP Layouts Manager?',
             'description' => '
                 <ul>
                   <li><strong>Dynamic Layouts:</strong> Quickly switch and manage layouts across your site.</li>
@@ -56,7 +56,7 @@
         [
             'title' => '🎯 Who Is It For?',
             'description' => '
-                Hyde Layouts Manager is perfect for:
+                HydePHP Layouts Manager is perfect for:
                 <ul>
                   <li>Developers building blogs, portfolios, or complex sites with HydePHP.</li>
                   <li>Laravel users looking for better layout and component management.</li>
@@ -79,13 +79,13 @@
         [
             'title' => '🚀 Ready to Get Started?',
             'description' => '
-                 Download Hyde Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
+                 Download HydePHP Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
             '
         ],
         [
             'title' => '✨ Credits',
             'description' => '
-                 Hyde Layouts Manager is built with the help of many amazing tools and frameworks:
+                 HydePHP Layouts Manager is built with the help of many amazing tools and frameworks:
                 <ul>
                   <li><strong>HydePHP:</strong> A modern PHP static site generator. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://hydephp.github.io/" target="_blank">Explore HydePHP →</a></li>
                   <li><strong>Flowbite:</strong> A library for beautiful, accessible UI components. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://flowbite.com/" target="_blank">Explore Flowbite →</a></li>

@@ -1,6 +1,6 @@
 @if(config('hyde-layouts-manager.layouts.melasistema.navigation.brand.type') === 'image')
     <a href="{{ route('index') }}"
-       class="flex items-center space-x-3 rtl:space-x-reverse"
+       class="flex items-center space-x-3 rtl:space-x-reverse md:w-48"
        x-data="{ darkMode: document.documentElement.classList.contains('dark') }"
        x-init="
             $watch('darkMode', value => {

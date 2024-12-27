@@ -10,7 +10,7 @@ use Illuminate\Console\Command;
  * ListLayoutsCommand
  *
  * This command is responsible for listing all the registered layouts and components
- * in the Hyde Layouts Manager package. It provides an organized view in the CLI of
+ * in the HydePHP Layouts Manager package. It provides an organized view in the CLI of
  * available layouts and reusable components with their corresponding view paths.
  *
  * Key functions:

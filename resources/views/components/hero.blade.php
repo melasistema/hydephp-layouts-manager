@@ -2,7 +2,7 @@
 |--------------------------------------------------------------------------
 | Hero Component
 |--------------------------------------------------------------------------
-| This is the Hero component file for the Hyde Layouts Manager package.
+| This is the Hero component file for the HydePHP Layouts Manager package.
 | File Path: resources/views/components/hero.blade.php
 |
 | Usage Recommendation:
