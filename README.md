@@ -384,7 +384,7 @@ This package is licensed under the MIT License. See the [LICENSE](./LICENSE.md) 
 
 ## 💡 Contributing
 
-We welcome contributions! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/melasistema/hyde-layouts-manager).
+We welcome contributions! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/melasistema/hydephp-layouts-manager).
 
 ----------
 
