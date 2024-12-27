@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\File;
  * Key methods:
  * - handle(): Checks for an existing `tailwind.config.js` file and prompts the user
  *   before replacing it with the default configuration from the package. If the file
- *   exists, the user is asked for confirmation before proceeding with the overwrite.
+ *   exists, the user is asked for confirmation before proceeding to overwrite.
  *   If the user confirms, the default configuration is copied to the user's project.
  *
  * Important Notice:
@@ -28,7 +28,6 @@ use Illuminate\Support\Facades\File;
  * For detailed instructions and to choose between manual configuration or using
  * the command, please consult the README.md file.
  *
- * @see https://github.com/your-repository-link/README.md for more information
  * @package Melasistema\HydeLayoutsManager
  * @author  Luca Visciola
  * @copyright 2024 Luca Visciola

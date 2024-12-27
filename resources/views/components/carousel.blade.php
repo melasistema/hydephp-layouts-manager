@@ -29,7 +29,6 @@
 |--------------------------------------------------------------------------
 -->
 
-
 @props([
     // Array of image paths. If not provided, defaults from the config file are used.
     'images' => config('hyde-layouts-manager.components.carousel.default.images', []),

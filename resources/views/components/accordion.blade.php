@@ -97,7 +97,6 @@
 ])
 
 <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
-
     @foreach ($items as $key => $item)
         <h2 id="accordion-flush-heading-{{ $key }}">
             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-{{ $key }}" aria-expanded="true" aria-controls="accordion-flush-body-{{ $key }}">
