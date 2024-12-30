@@ -34,7 +34,7 @@
     'images' => config('hyde-layouts-manager.components.carousel.default.images', []),
 ])
 
-<div id="default-carousel" class="relative w-full z-0" data-carousel="slide">
+<div class="relative w-full z-0" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
         @forelse ($images as $index => $image)

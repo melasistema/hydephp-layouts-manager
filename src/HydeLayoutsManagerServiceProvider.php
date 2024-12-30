@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager;
 
+use Exception;
 use Hyde\Pages\MarkdownPage;
 use Hyde\Pages\MarkdownPost;
 use Illuminate\Support\ServiceProvider;
@@ -47,9 +48,9 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         // Register custom Artisan commands if the application is running in the console
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ListLayoutsCommand::class,  // Register the ListLayoutsCommand to list available layouts
-                MergeTailwindConfigCommand::class, // Register the MergeTailwindConfigCommand to merge Tailwind configurations
-                MergePackageJsonCommand::class, // Register the MergePackageJsonCommand to merge package.json dependencies
+                ListLayoutsCommand::class,
+                MergeTailwindConfigCommand::class,
+                MergePackageJsonCommand::class,
             ]);
         }
 
@@ -58,7 +59,6 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
         $this->app->singleton('layout.manager', function ($app) {
             return new LayoutManager($app['view']);
         });
-
     }
 
     /**
@@ -68,37 +68,28 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
      * It includes loading views and publishing assets (e.g., config and view files).
      *
      * @return void
+     * @throws Exception
      */
     public function boot(): void
     {
-        // Register the package's views, so they can be used within the application
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'hyde-layouts-manager');
-        // Publish the package's assets (views, configuration, Tailwind config) to the application
-        $this->publishAssets();
+        // Load views from the published folder, if available, or fallback to the package's views
+        $this->loadViewsFrom([
+            resource_path('views/vendor/hyde-layouts-manager'), // Check for published views
+            __DIR__ . '/../resources/views'                    // Fallback to package views
+        ], 'hyde-layouts-manager');
 
         // Dynamically set the template for MarkdownPage based on HydePHP Layouts Manager configuration
         $defaultLayout = config('hyde-layouts-manager.default_layout', 'hyde');
         $layouts = config('hyde-layouts-manager.layouts');
+
         MarkdownPage::$template = $layouts[$defaultLayout]['page'] ?? 'hyde::layouts.page';
         MarkdownPost::$template = $layouts[$defaultLayout]['post'] ?? 'hyde::layouts.post';
-    }
 
-    /**
-     * Load views from the active theme.
-     *
-     * @return void
-     */
-    protected function loadThemeViews(): void
-    {
-        $theme = config('hyde-layouts-manager.default_layout');
-        if ($theme === 'hyde') {
-            // Load views from Hyde's default location
-            $this->loadViewsFrom(resource_path('views/vendor/hyde'), 'hyde');
-        } else {
-            // Load views from the custom layout theme
-            $themeLayoutsPath = __DIR__ . '/../resources/views/' . $theme;
-            $this->loadViewsFrom($themeLayoutsPath, 'hyde-layouts-manager');
-        }
+        // Publish the package's assets (views, configuration, Tailwind config) to the application
+        $this->publishAssets();
+
+        // Handle media folder or symlink logic as the last step to serve default media files
+        $this->handleMediaSymlink();
     }
 
     /**
@@ -130,10 +121,43 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
             // Publish the assets to the application's resources directory
             __DIR__.'/../resources/assets' => resource_path('assets/vendor/hyde-layouts-manager'),
         ], 'hyde-layouts-manager-assets');
+    }
 
-        $this->publishes([
-            // Publish the default component images to the application's _media directory
-            __DIR__.'/../resources/images' => base_path('_media/hyde-layouts-manager'),
-        ], 'hyde-layouts-manager-media');
+    /**
+     * Create a symlink to the package's media folder in the application for the default images.
+     *
+     * @return void
+     * @throws Exception
+     */
+    protected function handleMediaSymlink(): void
+    {
+        // Define the paths for media
+        $targetPath = base_path('vendor/melasistema/hyde-layouts-manager/resources/images');
+        $symlinkPath = base_path('_media/hyde-layouts-manager'); // This is where the media should be in the project
+
+        // Check if the symlink or folder handling needs to occur
+        if (file_exists($symlinkPath)) {
+            if (is_dir($symlinkPath)) {
+                // Published folder exists, no action needed
+                return;
+            } elseif (is_link($symlinkPath)) {
+                // Symlink exists, ensure the target is valid
+                if (!file_exists($targetPath)) {
+                    throw new \Exception("Symlink target path does not exist: $targetPath");
+                }
+                // Symlink is valid, no further action needed
+                return;
+            } else {
+                // Unexpected file exists, throw an exception to avoid conflicts
+                throw new \Exception("Unexpected file exists at $symlinkPath");
+            }
+        }
+
+        // If the symlinkPath does not exist, create a symlink
+        if (file_exists($targetPath)) {
+            symlink($targetPath, $symlinkPath);
+        } else {
+            throw new \Exception("Target path does not exist: $targetPath");
+        }
     }
 }

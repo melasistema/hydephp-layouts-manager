@@ -140,6 +140,12 @@ mix.css('node_modules/flowbite/dist/flowbite.css', 'app.css')
     .copyDirectory('_site/media', '_media')
 ```
 
+Run the Laravel Mix build:
+
+```bash
+npm run dev
+```
+
 ----------
 
 ### 6. Modify the @extends Directive 
@@ -154,6 +160,12 @@ Add dynamic @extends() directive to your pages for the "Theme Switching" es. `in
 @section('content')
 // page content
 @endsection
+```
+
+If you are using a post page, you can use the MelaSistema blog post feed:
+
+```php
+@include('hyde-layouts-manager::layouts.melasistema.posts.blog-post-feed')
 ```
 
 ----------
@@ -191,9 +203,9 @@ Layouts are defined in the `layouts` section of the configuration file. Each lay
 ```php
 'layouts' => [
     'melasistema' => [
-        'app' => 'vendor.hyde-layouts-manager.layouts.melasistema.app',
-        'page' => 'vendor.hyde-layouts-manager.layouts.melasistema.page',
-        'post' => 'vendor.hyde-layouts-manager.layouts.melasistema.post',
+        'app' => 'hyde-layouts-manager::layouts.melasistema.app',
+        'page' => 'hyde-layouts-manager::layouts.melasistema.page',
+        'post' => 'hyde-layouts-manager::layouts.melasistema.post',
         'styles' => 'vendor/hyde-layouts-manager/css/melasistema/app.css',
         'scripts' => 'vendor/hyde-layouts-manager/js/melasistema/app.js',
     ],
@@ -234,8 +246,8 @@ You can use the Blade `@include` directive to render components with default or 
 
 ```php
 @include('vendor.hyde-layouts-manager.components.hero', [
-    'title' => 'Welcome to My Site',
-    'description' => 'This is a customizable hero component.',
+    'headingText' => 'Make magic with HydePHP Layouts Manager',
+    'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
 ])
 ```
 
@@ -245,13 +257,13 @@ While this approach is straightforward and supports simple customizations, we en
 
 #### **2. Using `renderComponent()`**
 
-The `renderComponent()` method, provided by the `Hyde Layouts Manager`, dynamically renders components with the ability to override default configurations. Here's an example:
+The `renderComponent()` method, provided by the `HydePHP Layouts Manager`, dynamically renders components with the ability to override default configurations. Here's an example:
 
 ```php
 {!! app('layout.manager')->renderComponent('hero', 
     [
-    'title' => 'Welcome to My Amazing Site',
-    'description' => 'This hero component is fully customizable.',
+    'headingText' => 'Make magic with HydePHP Layouts Manager',
+    'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
     'primaryButton' => [
         'text' => 'Get Started',
         'link' => '/start',
@@ -375,7 +387,7 @@ This project is made possible by the inspiration, contributions, and tools of an
 
 ### 🙌 Special Thanks
 
-To the open-source community and all contributors—your dedication and collaboration inspire innovation and make tools like
+To the open-source community and all contributors—your dedication and collaboration inspire innovation and make projects like this possible. 🌟
 
 
 ## 📝 License

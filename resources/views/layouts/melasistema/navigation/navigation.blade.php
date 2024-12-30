@@ -52,6 +52,5 @@
                 @endforeach
             </ul>
         </div>
-
     </div>
 </nav>

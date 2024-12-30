@@ -15,7 +15,6 @@ use Illuminate\View\Factory as ViewFactory;
  * Key methods:
  * - listLayouts(): Returns an array of registered layouts.
  * - renderComponent(): Renders a component with a given name and attributes, using the specified view and default data.
- * - loadLayoutView(): Loads the view for the active layout based on configuration, or returns an empty string if not found.
  *
  * @package Melasistema\HydeLayoutsManager
  * @author  Luca Visciola
@@ -58,6 +57,34 @@ class LayoutManager
      * @param array $attributes
      * @return string|null
      */
+    /*public function renderComponent(string $name, array $attributes = []): ?string
+    {
+        $component = config("hyde-layouts-manager.components.$name");
+
+        if ($component && isset($component['view'])) {
+            $view = $component['view'];
+            $defaultData = $component['default'] ?? [];
+
+            // Merge default attributes with passed attributes recursively
+            $data = array_replace_recursive($defaultData, $attributes);
+
+            // Resolve media paths
+            if (isset($data['images']) && is_array($data['images'])) {
+                $data['images'] = $this->resolveMediaPaths($data['images']);
+            }
+
+            return $this->viewFactory->make($view, $data)->render();
+        }
+
+        return null;
+    }*/
+    /**
+     * Render a component with the given name and attributes.
+     *
+     * @param string $name
+     * @param array $attributes
+     * @return string|null
+     */
     public function renderComponent(string $name, array $attributes = []): ?string
     {
         $component = config("hyde-layouts-manager.components.$name");
@@ -66,8 +93,18 @@ class LayoutManager
             $view = $component['view'];
             $defaultData = $component['default'] ?? [];
 
-            // Merge default attributes with passed attributes
-            $data = array_merge($defaultData, $attributes);
+            // Handle images: use provided array if set, otherwise default
+            if (isset($attributes['images']) && is_array($attributes['images'])) {
+                $defaultData['images'] = $attributes['images']; // Override defaults if images are explicitly set
+            }
+
+            // Resolve media paths for images
+            if (isset($defaultData['images']) && is_array($defaultData['images'])) {
+                $defaultData['images'] = $this->resolveMediaPaths($defaultData['images']);
+            }
+
+            // Merge other attributes with defaults
+            $data = array_replace_recursive($defaultData, $attributes);
 
             return $this->viewFactory->make($view, $data)->render();
         }
@@ -76,24 +113,24 @@ class LayoutManager
     }
 
     /**
-     * Load the view for the active layout.
+     * Resolve media paths, prioritizing project media directory over package media directory.
      *
-     * @param string|null $layout
-     * @return string
+     * @param array $mediaPaths
+     * @return array
      */
-    public function loadLayoutView(string $layout = null): string
+    protected function resolveMediaPaths(array $mediaPaths): array
     {
-        // Default to the config value if layout is not passed
-        $layout = $layout ?: config('hyde-layouts-manager.default_layout', 'hyde');
+        $resolvedPaths = [];
 
-        // Check if the layout exists in the configurations
-        $layouts = config('hyde-layouts-manager.layouts', []);
-        if (isset($layouts[$layout])) {
-            // Return the layout view path
-            return $layouts[$layout]['app'] ?? '';
+        foreach ($mediaPaths as $path) {
+            if (str_starts_with($path, 'media/')) {
+                // Use the developer's custom path directly, assuming they handle the `_media` prefix
+                $resolvedPaths[] = asset($path);
+            } else {
+                // Default to the package's _media/hyde-layouts-manager folder for relative paths
+                $resolvedPaths[] = asset('hyde-layouts-manager/' . ltrim($path, '/'));
+            }
         }
-
-        // Return an empty string if the layout is not found
-        return '';
+        return $resolvedPaths;
     }
 }
