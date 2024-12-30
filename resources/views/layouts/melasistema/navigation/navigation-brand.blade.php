@@ -30,7 +30,7 @@
     <a href="{{ Routes::get('index') }}">
         <div class="flex items-center gap-4">
             <img class="w-10 h-10 rounded-full" src="{{ asset('hyde-layouts-manager/mixed/melasistema-luca-visciola.jpg')  }}" alt="Melasistema - Luca Visciola">
-            <div class="font-medium dark:text-white">
+            <div class="font-medium dark:text-white hidden md:block">
                 <div>Melasistema</div>
                 <div class="text-sm text-gray-500 dark:text-gray-400">Packages for HydePHP</div>
             </div>
