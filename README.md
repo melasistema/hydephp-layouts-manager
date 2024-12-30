@@ -396,6 +396,15 @@ This package is licensed under the MIT License. See the [LICENSE](./LICENSE.md) 
 
 ----------
 
+## 📖 Changelog
+
+All notable changes to this project are documented in [CHANGELOG](./CHANGELOG.md).
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+----------
+
 ## 💡 Contributing
 
 We welcome contributions! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/melasistema/hydephp-layouts-manager).
