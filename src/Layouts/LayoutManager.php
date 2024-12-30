@@ -57,34 +57,6 @@ class LayoutManager
      * @param array $attributes
      * @return string|null
      */
-    /*public function renderComponent(string $name, array $attributes = []): ?string
-    {
-        $component = config("hyde-layouts-manager.components.$name");
-
-        if ($component && isset($component['view'])) {
-            $view = $component['view'];
-            $defaultData = $component['default'] ?? [];
-
-            // Merge default attributes with passed attributes recursively
-            $data = array_replace_recursive($defaultData, $attributes);
-
-            // Resolve media paths
-            if (isset($data['images']) && is_array($data['images'])) {
-                $data['images'] = $this->resolveMediaPaths($data['images']);
-            }
-
-            return $this->viewFactory->make($view, $data)->render();
-        }
-
-        return null;
-    }*/
-    /**
-     * Render a component with the given name and attributes.
-     *
-     * @param string $name
-     * @param array $attributes
-     * @return string|null
-     */
     public function renderComponent(string $name, array $attributes = []): ?string
     {
         $component = config("hyde-layouts-manager.components.$name");
