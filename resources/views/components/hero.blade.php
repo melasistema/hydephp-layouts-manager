@@ -27,8 +27,8 @@
 -->
 
 @props([
-    'settings' => config('hyde-layouts-manager.components.hero.default.settings', []),
-    'layout' => config('hyde-layouts-manager.components.hero.default.layout', []),
+    'settings' => Config::getArray('hyde-layouts-manager.components.hero.default.settings', []),
+    'layout' => Config::getArray('hyde-layouts-manager.components.hero.default.layout', []),
 ])
 
 <!-- Render Hero -->

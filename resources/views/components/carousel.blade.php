@@ -28,8 +28,8 @@
 -->
 
 @props([
-    'images' => config('hyde-layouts-manager.components.carousel.default.images', []),
-    'layout' => config('hyde-layouts-manager.components.carousel.default.layout', []),
+    'images' => Config::getArray('hyde-layouts-manager.components.carousel.default.images', []),
+    'layout' => Config::getArray('hyde-layouts-manager.components.carousel.default.layout', []),
 ])
 
 <div class="relative w-full z-0" data-carousel="slide">
