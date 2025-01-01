@@ -77,7 +77,7 @@ Automate the process with the `tailwind:merge` command. This replaces your exist
 Run the command:
 
 ```bash
-php hyde tailwind:merge`
+php hyde tailwind:merge
 ```
 
 ----------
@@ -236,46 +236,61 @@ my-hyde-project/
 
 ### 🧩 Using Components
 
-Components are reusable UI elements with configurable defaults. The package provides two ways to use components in your Blade templates.
+Components are reusable UI elements with configurable defaults. The package provides a method to dynamically render components in your Blade templates.
 
 ----------
 
-#### **1. Using `@include`**
-
-You can use the Blade `@include` directive to render components with default or customized data:
-
-```php
-@include('vendor.hyde-layouts-manager.components.hero', [
-    'headingText' => 'Make magic with HydePHP Layouts Manager',
-    'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
-])
-```
-
-While this approach is straightforward and supports simple customizations, we encourage using the `renderComponent()` method for better flexibility and configuration management.
-
-----------
-
-#### **2. Using `renderComponent()`**
+#### **Using `renderComponent()`**
 
 The `renderComponent()` method, provided by the `HydePHP Layouts Manager`, dynamically renders components with the ability to override default configurations. Here's an example:
 
 ```php
-{!! app('layout.manager')->renderComponent('hero', 
-    [
-    'headingText' => 'Make magic with HydePHP Layouts Manager',
-    'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
-    'primaryButton' => [
-        'text' => 'Get Started',
-        'link' => '/start',
+    {!! app('layout.manager')->renderComponent('hero', [
+    
+        'layout' => [
+            'showSecondaryButton' => false,
         ],
-    ]) 
-!!}
+        'settings' => [
+            'textColor' => 'text-indigo-500',
+            'darkTextColor' => 'dark:text-white',
+            'headingText' => 'Make magic with HydePHP Layouts Manager',
+            'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
+            ...
+        ]
+                
+    ]) !!} 
 ```
 
 This method fetches the component configuration from the `hyde-layouts-manager.php` configuration file, allowing you to:
 
 1.  Define defaults for each component.
 2.  Override settings dynamically at runtime.
+
+----------
+
+#### **Deprecation Notice**
+
+The usage of `@include` to render components is deprecated starting from version `0.1.0`. While previously supported, this approach does not leverage the package’s configuration capabilities and can lead to inconsistencies when managing assets like images.
+
+If you previously used `@include`, we recommend migrating to the `renderComponent()` method for a more robust and future-proof implementation:
+
+```php
+    // Deprecated
+    @include('hyde-layouts-manager::components.hero', [
+        'settings' => [
+            'headingText' => 'Make magic with HydePHP Layouts Manager',
+            'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
+        ]
+    ])
+    
+    // Recommended
+    {!! app('layout.manager')->renderComponent('hero', [
+        'settings' => [
+            'headingText' => 'Make magic with HydePHP Layouts Manager',
+            'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
+        ]
+    ]) !!}
+```
 
 ----------
 
@@ -286,28 +301,39 @@ You can customize default settings for components in the `hyde-layouts-manager.p
 ```php
 'components' => [
     'hero' => [
-        'view' => 'vendor.hyde-layouts-manager.components.hero',
+        'view' => 'hyde-layouts-manager::components.hero',
         'default' => [
-            'bgColor' => 'bg-white',
-            'darkBgColor' => 'dark:bg-gray-900',
-            'padding' => 'py-16',
-            'textColor' => 'text-gray-900',
-            'darkTextColor' => 'dark:text-white',
-            'title' => 'HydePHP Layouts Manager',
-            'description' => 'Manage your layouts and reusable components with ease.',
-            'align' => 'center',
-            'primaryButton' => [
-                'text' => 'Learn More',
-                'link' => '/learn-more',
-                'bgColor' => 'bg-blue-700',
-                'textColor' => 'text-white',
+            'layout' => [
+                'showSubHeadingText' => true,  // New flag to control visibility of the subheading
+                'showPrimaryButton' => true, // New flag to control visibility of the primary button
+                'showSecondaryButton' => true, // New flag to control visibility of the secondary button
             ],
-            'secondaryButton' => [
-                'text' => 'Get Started',
-                'link' => '/start',
-                'bgColor' => 'bg-gray-100',
-                'textColor' => 'text-indigo-500',
-            ],
+            'settings' => [
+                'bgColor' => 'bg-white',
+                'darkBgColor' => 'dark:bg-gray-900',
+                'padding' => 'py-16',
+                'textColor' => 'text-gray-900',
+                'darkTextColor' => 'dark:text-white',
+                'headingText' => 'HydePHP Layouts Manager',
+                'subHeadingText' => 'Manage your layouts and reusable components with ease.',
+                'align' => 'center',
+                'primaryButton' => [
+                    'text' => '<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#fff"/></svg> <span>GitHub</span>',
+                    'link' => 'https://github.com/melasistema/hydephp-layouts-manager',
+                    'bgColor' => 'bg-blue-700',
+                    'textColor' => 'text-white',
+                    'darkBgColor' => 'dark:bg-blue-900',
+                    'darkTextColor' => 'dark:text-white',
+                ],
+                'secondaryButton' => [
+                    'text' => 'About Me',
+                    'link' => 'https://github.com/melasistema',
+                    'bgColor' => 'bg-white',
+                    'textColor' => 'text-indigo-500',
+                    'darkBgColor' => 'dark:bg-gray-900',
+                    'darkTextColor' => 'dark:text-white',
+                ],
+            ]
         ],
     ],
 ],
