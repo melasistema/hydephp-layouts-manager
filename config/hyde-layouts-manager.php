@@ -152,7 +152,7 @@ return [
                 'items' => [                          // Default accordion items
                     [
                         'title' => '🚀 What is HydePHP Layouts Manager?',
-                        'description' => 'HydePHP Layouts Manager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. It\'s already available a template and some components using <a href="https://flowbite.com" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
+                        'description' => 'HydePHP Layouts Manager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. It\'s already available a template and some components using <a href="https://flowbite.com" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
                     ],
                     [
                         'title' => '🌟 Why Use HydePHP Layouts Manager?',
@@ -163,7 +163,7 @@ return [
                               <li><strong>Easy Integration:</strong> Works seamlessly with HydePHP.</li>
                               <li><strong>CLI Tools:</strong> Automate tasks like listing layouts, merging Tailwind configurations and more.</li>
                             </ul>
-                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager/README.md" target="_blank">Learn more and get started →</a></strong>
+                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Learn more and get started →</a></strong>
                         '
                     ],
                     [
@@ -175,7 +175,7 @@ return [
                               <li>Laravel users looking for better layout and component management.</li>
                               <li>Teams seeking clean, maintainable design workflows. It\'s already including a Theme and few <a href="https://flowbite.com/" target="_blank">Flowbite</a> open source components.</li>
                             </ul>
-                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">See examples and contribute →</a></strong>
+                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">See examples and contribute →</a></strong>
                         '
                     ],
                     [
@@ -186,13 +186,13 @@ return [
                               <li><strong>Flexible Defaults:</strong> Override default attributes easily in Blade templates.</li>
                               <li><strong>Improved Workflow:</strong> Save time with built-in tools and reusable designs.</li>
                             </ul>
-                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Try it for yourself →</a></strong>
+                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Try it for yourself →</a></strong>
                         '
                     ],
                     [
                         'title' => '🚀 Ready to Get Started?',
                         'description' => '
-                             Download HydePHP Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hyde-layouts-manager" target="_blank">Download from GitHub →</a></strong>
+                             Download HydePHP Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Download from GitHub →</a></strong>
                         '
                     ],
                     [

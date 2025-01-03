@@ -21,6 +21,13 @@ HydePHP Layouts Manager is a powerful package designed to simplify the managemen
 
 -   **Customizable Themes**: Modify and extend default layouts and styles.
 
+## 📋 Requirements
+
+Before installing the package, ensure your project meets the following requirements:
+
+- **HydePHP Framework**: The package is designed for projects using [HydePHP](https://hydephp.github.io/) and requires version `^1.7` or higher.
+- **PHP Version**: Your project should be running PHP 8.0 or higher to ensure compatibility with HydePHP and this package.
+- **Composer**: Ensure Composer is installed and properly configured in your environment.
 
 ## 🛠️ Installation
 
