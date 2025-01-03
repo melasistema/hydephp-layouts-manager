@@ -106,7 +106,7 @@ module.exports = {
     },
 
     plugins: [
-        ...HydeLayoutsManagerConfig.plugins,
-        require('@tailwindcss/typography')
+        require('@tailwindcss/typography'),
+        ...HydeLayoutsManagerConfig.plugins
     ],
 };

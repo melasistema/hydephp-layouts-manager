@@ -1,0 +1,13 @@
+{
+  "layouts": {
+    "melasistema": {
+      "use_google_fonts": true,
+      "families": {
+        "primary": "Lato:400,700",
+        "secondary": "Inter:400,600",
+        "display": "Poppins:400"
+      },
+      "default_family": "secondary"
+    }
+  }
+}

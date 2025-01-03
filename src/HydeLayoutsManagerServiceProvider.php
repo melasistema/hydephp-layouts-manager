@@ -110,6 +110,8 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
             __DIR__ . '/../tailwind-layouts-manager.config.js' => base_path('tailwind-layouts-manager.config.js'),
             // Publish the package.json to the application's root directory
             __DIR__ . '/../package.json' => base_path('package-hyde-layouts-manager.json'),
+            // Publish the hyde-layouts-manager-font.json to the application's config directory
+            __DIR__ . '/../config/hyde-layouts-manager-fonts.json' => config_path('hyde-layouts-manager-fonts.json'),
         ], 'hyde-layouts-manager-config');
 
         $this->publishes([
