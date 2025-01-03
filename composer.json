@@ -3,7 +3,7 @@
     "description": "Effortless HydePHP Layouts and Components Management. HydePHP Layouts Manager is a powerful Composer package that simplifies the way you manage layouts and reusable components within your HydePHP projects.",
     "type": "library",
     "license": "MIT",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "keywords": ["hydephp", "hyde", "hyde layouts", "hydephp layouts", "layouts-manager", "layout customization", "tailwindcss", "laravel", "laravel integration", "php library", "hydephp extension", "developer tools", "frontend framework", "hydephp theme", "hyde modular layouts", "laravel ecosystem"],
     "autoload": {
         "psr-4": {

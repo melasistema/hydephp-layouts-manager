@@ -3,11 +3,18 @@
     "melasistema": {
       "use_google_fonts": true,
       "families": {
-        "primary": "Lato:400,700",
-        "secondary": "Inter:400,600",
+        "primary": "Roboto:400",
+        "secondary": "Poppins:400",
         "display": "Poppins:400"
       },
-      "default_family": "secondary"
+      "typography_mapping": {
+        "h1": "accent",
+        "h2": "secondary",
+        "p": "display"
+      },
+      "custom_css": {
+
+      }
     }
   }
 }
