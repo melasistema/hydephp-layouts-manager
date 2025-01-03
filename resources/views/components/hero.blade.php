@@ -39,9 +39,6 @@
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             {{ $settings['headingText'] }}
         </h1>
-        <h2 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            {{ $settings['headingText'] }}
-        </h2>
 
         <!-- Hero Sub Heading (conditionally rendered based on showSubHeadingText) -->
         @if (isset($layout['showSubHeadingText']) && $layout['showSubHeadingText'])
@@ -52,7 +49,6 @@
 
         <!-- Button Group -->
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-
             <!-- Primary Button (conditionally rendered based on showPrimaryButton) -->
             @if (isset($layout['showPrimaryButton']) && $layout['showPrimaryButton'] && isset($settings['primaryButton']['link']))
                 <a href="{{ $settings['primaryButton']['link'] ?? '#' }}"
@@ -72,6 +68,6 @@
                 </a>
             @endif
         </div>
+
     </div>
 </div>
-

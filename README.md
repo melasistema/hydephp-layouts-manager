@@ -59,20 +59,27 @@ Manually include the Layouts Manager configuration in your `tailwind.config.js` 
 
 ```javascript
 const HydeLayoutsManagerConfig = require('./tailwind-layouts-manager.config.js');
-    
-    module.exports = {
-       darkMode: 'class',
-       content: [
-           './resources/views/**/*.blade.php',
-           './vendor/hyde/framework/resources/views/**/*.blade.php',
-           ...HydeLayoutsManagerConfig.content,
-       ],
-       theme: {
-           extend: {
-               ...HydeLayoutsManagerConfig.theme.extend,
-           },
-       },
-    };
+
+module.exports = {
+    darkMode: 'class',
+    content: [
+        './_pages/**/*.blade.php',
+        './resources/views/**/*.blade.php',
+        './vendor/hyde/framework/resources/views/**/*.blade.php',
+        ...HydeLayoutsManagerConfig.content,
+    ],
+
+    theme: {
+        extend: {
+            ...HydeLayoutsManagerConfig.theme.extend,
+        },
+    },
+
+    plugins: [
+        require('@tailwindcss/typography'),
+        ...HydeLayoutsManagerConfig.plugins
+    ],
+};
 ```
 
 #### **Automated Merge**

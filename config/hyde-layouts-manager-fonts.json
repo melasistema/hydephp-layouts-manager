@@ -1,20 +1,32 @@
 {
   "layouts": {
     "melasistema": {
-      "use_google_fonts": true,
+      "use_google_fonts": false,
       "families": {
-        "primary": "Roboto:400",
-        "secondary": "Poppins:400",
-        "display": "Poppins:400"
+        "primary": "Gloria Hallelujah:wght@400",
+        "secondary": "Rock Salt:wght@400",
+        "display": "Rock Salt:wght@400",
+        "heading": "Rock Salt:wght@400",
+        "subheading": "Handlee:wght@400",
+        "accent": "Just Another Hand:wght@400",
+        "code": "Fira Code:wght@400;500",
+        "small": "Amatic SC:wght@400;700"
       },
       "typography_mapping": {
-        "h1": "accent",
-        "h2": "secondary",
-        "p": "display"
+        "h1": "display",
+        "h2": "heading",
+        "h3": "subheading",
+        "h4": "subheading",
+        "h5": "secondary",
+        "h6": "secondary",
+        "p": "primary",
+        "small": "small",
+        "code": "code",
+        "blockquote": "display",
+        "label": "secondary",
+        "button": "heading"
       },
-      "custom_css": {
-
-      }
+      "custom_css": {}
     }
   }
 }

@@ -12,29 +12,37 @@
 {{-- App Stylesheets --}}
 @include('hyde-layouts-manager::layouts.melasistema.styles')
 
-{{-- Conditionally load Google Fonts if enabled --}}
+{{-- (Optional) Google Fonts --}}
 @php
-    // Load font configuration from JSON file
+    // Load font configuration
     $fontConfigPath = config_path('hyde-layouts-manager-fonts.json');
-    $userFonts = file_exists($fontConfigPath)
-        ? json_decode(file_get_contents($fontConfigPath), true)
-        : null;
+    $userFonts = file_exists($fontConfigPath) ? json_decode(file_get_contents($fontConfigPath), true) : null;
 
-    // Extract the fonts configuration safely
     $useGoogleFonts = $userFonts['layouts']['melasistema']['use_google_fonts'] ?? false;
     $fontFamilies = $userFonts['layouts']['melasistema']['families'] ?? [];
 
-    // Generate Google Fonts URL if enabled
-    $googleFontsUrl = $useGoogleFonts
-        ? 'https://fonts.googleapis.com/css2?family='
-            . implode('&family=', array_map(fn($family) => str_replace(':', '+', $family), $fontFamilies))
-            . '&display=swap'
-        : null;
-@endphp
+    $googleFontsUrl = null;
+    if ($useGoogleFonts && !empty($fontFamilies)) {
+        $googleFonts = [];
+        foreach ($fontFamilies as $font => $config) {
+            // Split font name and variants
+            [$family, $variants] = explode(':', $config . ':');
+            $encodedFamily = urlencode($family);
 
-@if($useGoogleFonts && $googleFontsUrl)
+            // If variants include "ital,wght", add them; otherwise default to normal
+            $variants = $variants ?: 'wght@400';
+            $googleFonts[] = "family={$encodedFamily}:{$variants}";
+        }
+        $googleFontsUrl = 'https://fonts.googleapis.com/css2?' . implode('&', $googleFonts) . '&display=swap';
+    }
+@endphp
+@if ($useGoogleFonts && $googleFontsUrl)
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="{{ $googleFontsUrl }}" rel="stylesheet">
 @endif
+
+{{-- (Optional) Dark Mode --}}
 @if(Features::hasDarkmode())
     {{-- Check the local storage for theme preference to avoid FOUC --}}
     <meta id="meta-color-scheme" name="color-scheme" content="{{ Config::getString('hyde.default_color_scheme', 'light') }}">

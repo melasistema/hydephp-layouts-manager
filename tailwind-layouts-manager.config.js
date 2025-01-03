@@ -2,44 +2,30 @@
  * This is the Tailwind CSS configuration file for the HydePHP Layouts Manager package.
  *
  * @package Melasistema\HydeLayoutsManager
- * @author  Luca Visciola
  * @copyright 2024 Luca Visciola
  * @license MIT License
  *
  * To include this configuration in your project's `tailwind.config.js`,
  * you need to require and merge it with your existing configuration or
  * use the command from the package `tailwind:merge`.
+ * @see [README.md#installation] for more information on how to install the package. * @author  Luca Visciola
  *
- * Example usage in `tailwind.config.js`:
- *
- * const HydeLayoutsManagerConfig = require('./tailwind-layouts-manager.config.js');
- *
- * module.exports = {
- *     darkMode: 'class',
- *     content: [
- *         ...HydeLayoutsManagerConfig.content, // Merge Hyde Layouts Manager content paths
- *     ],
- *     theme: {
- *         extend: {
- *             ...HydeLayoutsManagerConfig.theme.extend, // Merge the extend
- *        },
- *     },
- * };
  **/
 const fs = require('fs');
 const path = require('path');
+const plugin = require('tailwindcss/plugin');
 
-// Load the fonts configuration dynamically from the JSON config file
-const userFonts = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, 'config/hyde-layouts-manager-fonts.json'), 'utf8')
-);
+const safeFontSplit = (font) => {
+    const fontName = font?.split(':')[0] || 'system-ui';
+    return fontName.includes(' ') ? `"${fontName}"` : fontName;
+};
 
+const fontConfigPath = './config/hyde-layouts-manager-fonts.json';
+const userFonts = fs.existsSync(fontConfigPath)
+    ? JSON.parse(fs.readFileSync(fontConfigPath, 'utf8'))
+    : {};
 const melasistemaFonts = userFonts?.layouts?.melasistema?.families || {};
 const typographyMapping = userFonts?.layouts?.melasistema?.typography_mapping || {};
-
-const safeFontSplit = (font) => (font?.split(':')[0] || 'system-ui');
-
-const plugin = require('tailwindcss/plugin');
 
 module.exports = {
     darkMode: 'class',
@@ -52,8 +38,14 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: [safeFontSplit(melasistemaFonts.primary), 'system-ui', 'sans-serif'],
+                primary: [safeFontSplit(melasistemaFonts.primary), 'system-ui', 'sans-serif'],
                 secondary: [safeFontSplit(melasistemaFonts.secondary), 'system-ui', 'sans-serif'],
-                display: [safeFontSplit(melasistemaFonts.display), 'system-ui', 'serif'],
+                display: [safeFontSplit(melasistemaFonts.display), 'serif'],
+                heading: [safeFontSplit(melasistemaFonts.heading), 'sans-serif'],
+                subheading: [safeFontSplit(melasistemaFonts.subheading), 'sans-serif'],
+                accent: [safeFontSplit(melasistemaFonts.accent), 'cursive'],
+                code: [safeFontSplit(melasistemaFonts.code), 'monospace'],
+                small: [safeFontSplit(melasistemaFonts.small), 'sans-serif'],
             },
         },
     },
@@ -61,15 +53,18 @@ module.exports = {
         require('flowbite'),
         plugin(function ({ addBase }) {
             addBase({
-                'h1': {
-                    fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h1] || 'primary'),
-                },
-                'h2': {
-                    fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h2] || 'primary'),
-                },
-                'p': {
-                    fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.p] || 'primary'),
-                },
+                'h1': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h1] || 'sans') },
+                'h2': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h2] || 'sans') },
+                'h3': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h3] || 'subheading') },
+                'h4': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h4] || 'subheading') },
+                'h5': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h5] || 'secondary') },
+                'h6': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.h6] || 'secondary') },
+                'p': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.p] || 'sans') },
+                'small': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.small] || 'small') },
+                'code': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.code] || 'code') },
+                'blockquote': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.blockquote] || 'display') },
+                'label': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.label] || 'secondary') },
+                'button': { fontFamily: safeFontSplit(melasistemaFonts[typographyMapping.button] || 'heading') }
             });
         }),
     ],
