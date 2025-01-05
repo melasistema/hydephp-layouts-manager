@@ -36,8 +36,9 @@
     // Extract and sanitize layout values
     $cols = $layout['cols'] ?? ['default' => 3];
     $gap = $layout['gap'] ?? 'gap-4';
+    $rounded = $layout['rounded'] ?? true;  // Fetch the 'rounded' option from the 'layout' array
 
-    // Filter and map to valid CSS classes
+    // Filter and map to valid CSS classes for grid layout
     $gridClasses = collect($cols)
         ->filter(fn($colCount) => $colCount !== '' && $colCount !== null) // Exclude empty or null breakpoints
         ->map(function ($colCount, $breakpoint) {
@@ -52,7 +53,7 @@
     <div class="grid {{ $gap }} {{ $gridClasses }}">
         @foreach ($images as $image)
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="{{ $image }}" alt="Gallery Image">
+                <img class="h-auto max-w-full {{ $rounded ? 'rounded-lg' : '' }}" src="{{ $image }}" alt="Gallery Image">
             </div>
         @endforeach
     </div>

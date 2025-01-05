@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
  *
  * This command is responsible for merging the Tailwind CSS configurations between
  * the user's existing `tailwind.config.js` and the default configuration provided
- * by the Melasistema HydeLayoutsManager package. It replaces the user's Tailwind
+ * by the Melasistema HydePHP Layouts Manager package. It replaces the user's Tailwind
  * configuration with the default settings if necessary, ensuring compatibility with
  * the package's layouts and components.
  *
@@ -26,7 +26,8 @@ use Illuminate\Support\Facades\File;
  *   your `tailwind.config.js` before running the command.
  *
  * For detailed instructions and to choose between manual configuration or using
- * the command, please consult the README.md file.
+ * the CLI command please
+ * @see [README.md#installation](https://github.com/melasistema/hydephp-layouts-manager/blob/master/README.md#installation)
  *
  * @package Melasistema\HydeLayoutsManager
  * @author  Luca Visciola

@@ -12,14 +12,15 @@
 {{-- App Stylesheets --}}
 @include('hyde-layouts-manager::layouts.melasistema.styles')
 
-{{-- (Optional) Google Fonts --}}
+{{-- Google Fonts CDN dynamic loading --}}
+{{-- @see https://github.com/melasistema/hydephp-layouts-manager/blob/master/config/hyde-layouts-manager-fonts.json --}}
 @php
     // Load font configuration
     $fontConfigPath = config_path('hyde-layouts-manager-fonts.json');
     $userFonts = file_exists($fontConfigPath) ? json_decode(file_get_contents($fontConfigPath), true) : null;
 
-    $useGoogleFonts = $userFonts['layouts']['melasistema']['use_google_fonts'] ?? false;
-    $fontFamilies = $userFonts['layouts']['melasistema']['families'] ?? [];
+    $useGoogleFonts = $userFonts['layouts'][Config::getString('hyde-layouts-manager.default_layout')]['use_google_fonts'] ?? false;
+    $fontFamilies = $userFonts['layouts'][Config::getString('hyde-layouts-manager.default_layout')]['families'] ?? [];
 
     $googleFontsUrl = null;
     if ($useGoogleFonts && !empty($fontFamilies)) {

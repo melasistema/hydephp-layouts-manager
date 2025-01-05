@@ -1,16 +1,16 @@
 {
   "layouts": {
     "melasistema": {
-      "use_google_fonts": false,
+      "use_google_fonts": true,
       "families": {
-        "primary": "Gloria Hallelujah:wght@400",
-        "secondary": "Rock Salt:wght@400",
-        "display": "Rock Salt:wght@400",
-        "heading": "Rock Salt:wght@400",
-        "subheading": "Handlee:wght@400",
-        "accent": "Just Another Hand:wght@400",
+        "primary": "Nunito Sans:wght@400;600;700",
+        "secondary": "Poppins:wght@500;600;700",
+        "display": "Fredoka:wght@400;600",
+        "heading": "Nunito:wght@600;700",
+        "subheading": "Karla:wght@400;600",
+        "accent": "Pacifico:wght@400",
         "code": "Fira Code:wght@400;500",
-        "small": "Amatic SC:wght@400;700"
+        "small": "Raleway:wght@400;600"
       },
       "typography_mapping": {
         "h1": "display",
@@ -22,7 +22,7 @@
         "p": "primary",
         "small": "small",
         "code": "code",
-        "blockquote": "display",
+        "blockquote": "accent",
         "label": "secondary",
         "button": "heading"
       },

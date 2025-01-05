@@ -5,8 +5,8 @@
        x-init="
             $watch('darkMode', value => {
                 $refs.logo.src = value
-                    ? '{{ config('hyde-layouts-manager.layouts.melasistema.navigation.brand.darkLogo', 'media/hyde-layouts-manager/logo/navigation-logo-dark.png') }}'
-                    : '{{ config('hyde-layouts-manager.layouts.melasistema.navigation.brand.lightLogo', 'media/hyde-layouts-manager/logo/navigation-logo-light.png') }}';
+                    ? '{{ asset(config('hyde-layouts-manager.layouts.melasistema.navigation.brand.darkLogo', 'media/hyde-layouts-manager/logo/navigation-logo-dark.png')) }}'
+                    : '{{ asset(config('hyde-layouts-manager.layouts.melasistema.navigation.brand.lightLogo', 'media/hyde-layouts-manager/logo/navigation-logo-light.png')) }}';
             });
             // Listen for changes to the `dark` class
             const observer = new MutationObserver(() => {
@@ -17,8 +17,8 @@
         <img
                 x-ref="logo"
                 :src="darkMode
-            ? '{{ config('hyde-layouts-manager.layouts.melasistema.navigation.brand.darkLogo', 'media/hyde-layouts-manager/logo/navigation-logo-dark.png') }}'
-            : '{{ config('hyde-layouts-manager.layouts.melasistema.navigation.brand.lightLogo', 'media/hyde-layouts-manager/logo/navigation-logo-light.png') }}'"
+            ? '{{ asset(config('hyde-layouts-manager.layouts.melasistema.navigation.brand.darkLogo', 'media/hyde-layouts-manager/logo/navigation-logo-dark.png')) }}'
+            : '{{ asset(config('hyde-layouts-manager.layouts.melasistema.navigation.brand.lightLogo', 'media/hyde-layouts-manager/logo/navigation-logo-light.png')) }}'"
                 class="{{ config('hyde-layouts-manager.layouts.melasistema.navigation.brand.logoHeight', 'h-10') }}"
         >
     </a>
@@ -36,5 +36,4 @@
             </div>
         </div>
     </a>
-
 @endif

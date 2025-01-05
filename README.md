@@ -11,23 +11,40 @@ HydePHP Layouts Manager is a powerful package designed to simplify the managemen
 
 ## 🌟 Features
 
--   **Dynamic Layout Management**: Easily switch and manage layouts across your HydePHP site.
+-   **Dynamic Layout Management**: Seamlessly switch and manage layouts across your HydePHP site for a consistent and adaptable design.
 
--   **Reusable Components**: Build modular, customizable components with default attributes.
+-   **Reusable Components**: Craft modular, customizable components with intuitive default attributes, enabling flexibility and reuse.
 
--   **CLI Tools**: Automate common tasks like listing layouts and merging configuration files.
+-   **Font Manager**: Typography is more than text—it's the voice of your design. With access to 1,790 font families from Google Fonts, you can shape the personality of your site to reflect your identity. Let every word speak volumes, with fonts tailored to inspire, inform, or captivate.
 
--   **Built-in Flowbite Support**: Includes pre-designed components using the [Flowbite](https://flowbite.com/) library.
+-   **CLI Tools**: Streamline your workflow with powerful commands for listing layouts, merging configurations, and automating essential tasks.
 
--   **Customizable Themes**: Modify and extend default layouts and styles.
+-   **Built-in Flowbite Support**: Enhance your site with beautiful, pre-designed components from the [Flowbite](https://flowbite.com/) library, perfectly integrated for ease of use.
+
+-   **Customizable Themes**: Transform and extend your layouts with fully customizable themes, tailored to your vision.
 
 ## 📋 Requirements
 
-Before installing the package, ensure your project meets the following requirements:
+Before installing this package, make sure your project meets the following prerequisites:
 
-- **HydePHP Framework**: The package is designed for projects using [HydePHP](https://hydephp.github.io/) and requires version `^1.7` or higher.
-- **PHP Version**: Your project should be running PHP 8.0 or higher to ensure compatibility with HydePHP and this package.
-- **Composer**: Ensure Composer is installed and properly configured in your environment.
+### Core Requirements
+
+-   **HydePHP Framework**: This package is specifically designed for projects built with [HydePHP](https://hydephp.github.io/). Ensure you are using version `^1.7` or higher.
+-   **PHP Version**: Your project must be running PHP 8.1 or newer to guarantee compatibility with both HydePHP and this package.
+-   **Composer**: Ensure that Composer is installed and configured in your development environment for dependency management.
+
+### Font Manager Requirements
+
+-   **Internet Connection**: An active internet connection is essential for the Font Manager to dynamically fetch font families from Google Fonts.
+-   **Environment Configuration**: Set the `DEFAULT_LAYOUT` variable in your `.env` file to ensure the correct fonts are applied and mapped based on your selected layout. This allows centralized and dynamic typography management.
+
+----------
+
+### Why These Requirements Matter
+
+These prerequisites ensure that the package functions as intended, especially for dynamic font management, layout switching, and integration with HydePHP. Proper setup guarantees a seamless and feature-rich experience.
+
+----------
 
 ## 🛠️ Installation
 
@@ -38,6 +55,19 @@ Use Composer to add the package to your project:
 ```bash
 composer require melasistema/hyde-layouts-manager
 ```
+
+----------
+
+### 2. Set the Default Layout in `.env`
+
+To ensure the package works as intended, add the `DEFAULT_LAYOUT` variable to your project's `.env` file.
+This value is critical for enabling dynamic typography management.
+
+```env
+DEFAULT_LAYOUT=melasistema
+```
+
+You can change this value to `hyde` or any custom layout defined in HydePHP Layouts Manager. Refer to the [README Usage Section](https://github.com/melasistema/hydephp-layouts-manager/blob/master/README.md/#usage) for more details.
 
 ----------
 
@@ -164,7 +194,7 @@ npm run dev
 
 ### 6. Modify the @extends Directive 
 
-Add dynamic @extends() directive to your pages for the "Theme Switching" es. `index.blade.php`:
+Add dynamic @extends() directive to your pages for the "Layout Switching" es. `index.blade.php`:
 
 ```php
 @php($title = 'Home')
@@ -176,10 +206,10 @@ Add dynamic @extends() directive to your pages for the "Theme Switching" es. `in
 @endsection
 ```
 
-If you are using a post page, you can use the MelaSistema blog post feed:
+If you are using a post page, you can use the active layout blog post feed:
 
 ```php
-@include('hyde-layouts-manager::layouts.melasistema.posts.blog-post-feed')
+@include('hyde-layouts-manager::layouts.'.config('hyde-layouts-manager.default_layout').'.posts.blog-post-feed')
 ```
 
 ----------
@@ -200,19 +230,24 @@ After completing the installation, you’re ready to build dynamic layouts and r
 
 ----------
 
+
 ## 🧩 Usage
 
 ### Setting the Default Layout
 
-Edit the `default_layout` option in the configuration file:
+The default layout for your site is determined by the `DEFAULT_LAYOUT` value in the `.env` file. This ensures centralized and dynamic configuration across all functionality, including the "HydePHP Layouts Manager" and "Typo Manager."
 
-```php
-'default_layout' => 'melasistema', // Or 'hyde' for the default Hyde layout
-```
+To set or switch the default layout, update your `.env` file:
+
+```env
+DEFAULT_LAYOUT=melasistema  # Use 'hyde' for the default Hyde layout or any custom layout like defined in the configuration file.
+``` 
+
+> **Note**: Setting this value in the `.env` file is crucial for proper functionality, as the Tailwind JavaScript configuration uses `process.env` to dynamically apply styles and fonts.
 
 ### Customizing Layouts
 
-Layouts are defined in the `layouts` section of the configuration file. Each layout can have different views, styles, scripts, and navigation settings:
+Layouts are defined in the `layouts` section of the configuration file. Each layout can include unique views, styles, scripts, and navigation settings:
 
 ```php
 'layouts' => [
@@ -225,6 +260,8 @@ Layouts are defined in the `layouts` section of the configuration file. Each lay
     ],
 ],
 ```
+
+> **Tip**: Define multiple layouts (Themes) in the configuration file to suit different pages or sections of your site, and switch them easily via the `.env` file.
 
 ## 📋 Example Project Structure
 
@@ -247,6 +284,51 @@ my-hyde-project/
 ```
 ----------
 
+## 🆎 Managing Typography
+
+Typography is a crucial aspect of design, shaping the visual identity and readability of your site. The Font Manager in HydePHP Layouts Manager provides access to 1,790 [Google Fonts](https://fonts.google.com/), enabling you to customize and manage fonts dynamically. Each Layout (Theme) can have its own font settings and mapping, allowing you to tailor typography to match your design vision. 
+
+file: `config/hyde-layouts-manager-fonts.json`
+
+```json
+{
+  "layouts": {
+    "melasistema": {
+      "use_google_fonts": true,
+      "families": {
+        "primary": "Indie Flower:wght@400",
+        "secondary": "Sour Gummy:wght@600",
+        "display": "Sour Gummy:wght@600",
+        "heading": "Sour Gummy:wght@600",
+        "subheading": "Handlee:wght@400",
+        "accent": "Just Another Hand:wght@400",
+        "code": "Fira Code:wght@400;500",
+        "small": "Amatic SC:wght@400;700"
+      },
+      "typography_mapping": {
+        "h1": "display",
+        "h2": "heading",
+        "h3": "subheading",
+        "h4": "subheading",
+        "h5": "secondary",
+        "h6": "secondary",
+        "p": "primary",
+        "small": "small",
+        "code": "code",
+        "blockquote": "display",
+        "label": "secondary",
+        "button": "heading"
+      },
+      "custom_css": {}
+    }
+  }
+}
+```
+
+> **Note**: If you want to use a layout without Typo Manager (Google Fonts CDN) you can set `use_google_fonts` to `false` and empty the `families` and `typography_mapping` arrays to fall back to `system-ui` fonts.
+> `npm run dev` to compile the assets it's required after those changes.
+
+----------
 
 ### 🧩 Using Components
 
@@ -315,41 +397,47 @@ You can customize default settings for components in the `hyde-layouts-manager.p
 ```php
 'components' => [
     'hero' => [
-        'view' => 'hyde-layouts-manager::components.hero',
-        'default' => [
-            'layout' => [
-                'showSubHeadingText' => true,  // New flag to control visibility of the subheading
-                'showPrimaryButton' => true, // New flag to control visibility of the primary button
-                'showSecondaryButton' => true, // New flag to control visibility of the secondary button
-            ],
-            'settings' => [
-                'bgColor' => 'bg-white',
-                'darkBgColor' => 'dark:bg-gray-900',
-                'padding' => 'py-16',
-                'textColor' => 'text-gray-900',
-                'darkTextColor' => 'dark:text-white',
-                'headingText' => 'HydePHP Layouts Manager',
-                'subHeadingText' => 'Manage your layouts and reusable components with ease.',
-                'align' => 'center',
-                'primaryButton' => [
-                    'text' => '<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#fff"/></svg> <span>GitHub</span>',
-                    'link' => 'https://github.com/melasistema/hydephp-layouts-manager',
-                    'bgColor' => 'bg-blue-700',
-                    'textColor' => 'text-white',
-                    'darkBgColor' => 'dark:bg-blue-900',
-                    'darkTextColor' => 'dark:text-white',
+            'view' => 'hyde-layouts-manager::components.hero',
+            'default' => [
+                'layout' => [
+                    'showSubHeadingText' => true,
+                    'showPrimaryButton' => true,
+                    'showSecondaryButton' => true,
                 ],
-                'secondaryButton' => [
-                    'text' => 'About Me',
-                    'link' => 'https://github.com/melasistema',
+                'settings' => [
                     'bgColor' => 'bg-white',
-                    'textColor' => 'text-indigo-500',
                     'darkBgColor' => 'dark:bg-gray-900',
+                    'padding' => 'py-8 px-4',
+                    'maxWidth' => 'max-w-screen-xl',
+                    'headingTextAlign' => 'center', // left, center, right
+                    'subHeadingTextAlign' => 'center', // left, center, right
+                    'buttonsGroupAlign' => 'center', // left, center, right
+                    'textColor' => 'text-gray-900',
                     'darkTextColor' => 'dark:text-white',
-                ],
-            ]
+                    'headingText' => 'HydePHP Layouts Manager',
+                    'subHeadingText' => 'Manage your layouts and reusable components with ease.',
+                    'primaryButton' => [
+                        'text' => 'Get Started',
+                        'link' => 'https://github.com/melasistema/hydephp-layouts-manager',
+                        'bgColor' => 'bg-blue-700',
+                        'textColor' => 'text-white',
+                        'hoverBgColor' => 'hover:bg-blue-800',
+                        'focusRingColor' => 'focus:ring-blue-300',
+                        'darkFocusRingColor' => 'dark:focus:ring-blue-900',
+                    ],
+                    'secondaryButton' => [
+                        'text' => 'About Me',
+                        'link' => 'https://github.com/melasistema',
+                        'bgColor' => 'bg-white',
+                        'textColor' => 'text-gray-900',
+                        'hoverBgColor' => 'hover:bg-gray-100',
+                        'borderColor' => 'border-gray-200',
+                        'focusRingColor' => 'focus:ring-gray-100',
+                        'darkFocusRingColor' => 'dark:focus:ring-gray-700',
+                    ],
+                ]
+            ],
         ],
-    ],
 ],
 ```
 
@@ -359,7 +447,7 @@ You can customize default settings for components in the `hyde-layouts-manager.p
 
 -   **Dynamic Overrides:** Easily override defaults for individual component instances.
 -   **Centralized Configuration:** Maintain consistent default values in the configuration file.
--   **Flexibility:** Simplifies reusability for components across projects.
+-   **Flexibility:** Simplifies re-usability for components across projects.
 
 ----------
 
@@ -407,8 +495,8 @@ Customize navigation branding by setting the `navigation.brand` options in the c
     'brand' => [
         'type' => 'image', // options: 'text', 'image', 'custom'
         'url' => '/',
-        'lightLogo' => 'media/hyde-layouts-manager/logo/logo-navigation-light.png',
-        'darkLogo' => 'media/hyde-layouts-manager/logo/logo-navigation-dark.png',
+        'lightLogo' => 'media/logo-navigation-light.png',
+        'darkLogo' => 'media/logo-navigation-dark.png',
         'logoHeight' => 'h-10',
     ],
 ],

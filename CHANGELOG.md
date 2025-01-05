@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.0 - 2025-01-06
+
+### Added
+
+- **Font Manager**:
+  - Introduced a powerful Font Manager with the ability to dynamically load pre-mapped font families from [Google Fonts](https://fonts.google.com/).
+  - Enabled font customization per layout through the `hyde-layouts-manager-fonts.json` configuration file.
+  - Added `...HydeLayoutsManagerConfig.plugins` in the restructured `tailwind-layouts-manager.config.js`.
+  - Introduced a new `DEFAULT_LAYOUT` option in the .env file, allowing users to specify/switch layouts and ensure consistent typography across the project.
+
+- **Hero Component**:
+  - Added alignment options for each part of the Hero component:
+    - `headingTextAlign`: Controls the alignment of the heading text (`left`, `center`, `right`).
+    - `subHeadingTextAlign`: Controls the alignment of the subheading text (`left`, `center`, `right`).
+    - `buttonsGroupAlign`: Controls the alignment of the buttons (`left`, `center`, `right`).
+  - Added font size options for each part of the Hero component:
+    - `headingTextSize`: Controls the font size of the heading text. (`default`, `md`, `lg`).
+    - `subHeadingTextSize`: Controls the font size of the heading text. (`default`, `md`, `lg`).
+    - `buttonTextSize`: Controls the font size of the heading text. (`default`, `md`, `lg`).
+
+- **Gallery Component**:
+  - Added `rounded` layout option to allow configuring rounded corners for gallery images.
+
+### Changed
+
+- **Configuration Changes**:
+  - The `DEFAULT_LAYOUT` variable is now a required setting in the `.env` file to ensure proper dynamic configuration of typography. Without this setting, the typography for the Hyde default theme will not render correctly when using the Layouts Manager.
+
+### Documentation
+
+- Updated the [README.md](./README.md) to include instructions for setting `DEFAULT_LAYOUT` in the `.env` file and other relevant information about the changes in this release.
+
+## 0.1.1 - 2025-01-03
+
+### Fixed
+- **Fix Accordion default links**:
+  - Fixed the issue where the default Accordion `links` configuration was not being loaded correctly.
+- **Requirements section in [README.md](./README.md)**:
+  - Updated the README.md with Requirements section.
+
 ## 0.1.0 - 2025-01-01
 
 ### Added

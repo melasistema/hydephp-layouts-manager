@@ -7,6 +7,7 @@ namespace Melasistema\HydeLayoutsManager;
 use Exception;
 use Hyde\Pages\MarkdownPage;
 use Hyde\Pages\MarkdownPost;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Melasistema\HydeLayoutsManager\Console\Commands\ListLayoutsCommand;
 use Melasistema\HydeLayoutsManager\Console\Commands\MergePackageJsonCommand;
