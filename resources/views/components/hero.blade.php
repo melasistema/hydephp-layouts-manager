@@ -67,7 +67,7 @@
                    {{ $settings['primaryButton']['hoverBgColor'] }} focus:ring-4
                    {{ $settings['primaryButton']['focusRingColor'] }}
                    dark:focus:ring-{{ $settings['primaryButton']['darkFocusRingColor'] }} w-auto">
-                    <a href="{{ $settings['primaryButton']['link'] }}">
+                    <a class="inline-flex" href="{{ $settings['primaryButton']['link'] }}">
                         {!! $settings['primaryButton']['text'] !!}
                     </a>
                     <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
