@@ -50,26 +50,39 @@ trait HasAttributes
             $defaultAttributes['images'] = $this->resolveMediaPaths($defaultAttributes['images']);
         }
 
-        // Replace items entirely if provided
-        if (isset($attributes['items']) && is_array($attributes['items'])) {
-            $defaultAttributes['items'] = $attributes['items']; // Fully replace items
-        }
-
-        // Handle layout (e.g., columns): if layout is provided, fully override the layout
-        if (isset($attributes['layout']) && is_array($attributes['layout'])) {
-            $defaultAttributes['layout'] = $attributes['layout']; // Fully replace layout
-        }
-
-        // Merge the settings attribute (e.g., background color, heading text, etc.)
+        // Merge settings array if passed
         if (isset($attributes['settings']) && is_array($attributes['settings'])) {
+            // Override only settings part with array_replace_recursive for settings
             $defaultAttributes['settings'] = array_replace_recursive(
                 $defaultAttributes['settings'] ?? [],
                 $attributes['settings']
             );
         }
 
-        // Merge other attributes with defaults, replacing values for non-array keys
-        return array_replace_recursive($defaultAttributes, $attributes);
+        // Merge layout array if passed
+        if (isset($attributes['layout']) && is_array($attributes['layout'])) {
+            // Override layout part with array_replace_recursive for layout
+            $defaultAttributes['layout'] = array_replace_recursive(
+                $defaultAttributes['layout'] ?? [],
+                $attributes['layout']
+            );
+
+            // Handle any special layout-related conditions here
+            // Example: Make sure to keep 'showSubHeadingText' consistent with 'subHeadingText'
+            if (isset($attributes['layout']['showSubHeadingText']) && !$attributes['layout']['showSubHeadingText']) {
+                // If 'showSubHeadingText' is false, you might want to override related settings.
+                $defaultAttributes['settings']['subHeadingText'] = ''; // Ensure the subheading text is cleared out
+            }
+        }
+
+        // Merge non-array attributes, prioritizing passed attributes
+        foreach ($attributes as $key => $value) {
+            if ($key !== 'settings' && $key !== 'layout') {
+                $defaultAttributes[$key] = $value;
+            }
+        }
+
+        return $defaultAttributes;
     }
 
     /**

@@ -63,23 +63,73 @@ class LayoutManager
      *
      * @param string $name
      * @param array $attributes
+     * @param string $layoutKey
      * @return string|null
      */
-    public function renderComponent(string $name, array $attributes = []): ?string
+    public function renderComponent(string $name, array $attributes = [], string $layoutKey = 'melasistema'): ?string
     {
-        $component = Config::getArray('hyde-layouts-manager.components.' . $name);
+        // Traverse the configuration nested array to find the component by name
+        $keys = explode('.', $name);
+        $component = Config::get('hyde-layouts-manager.components');
 
-        if ($component && isset($component['view'])) {
-            $view = $component['view'];
-            $defaultData = $component['default'] ?? [];
-
-            // Merge the default attributes with the user-provided ones using the trait method
-            $data = $this->mergeAttributes($defaultData, $attributes);
-
-            // Render the view with the merged data
-            return $this->viewFactory->make($view, $data)->render();
+        // Check if the component exists
+        foreach ($keys as $key) {
+            if (!isset($component[$key])) {
+                return null; // Component not found
+            }
+            $component = $component[$key];
         }
 
-        return null;
+        // Ensure component has a valid view
+        if (!isset($component['view'])) {
+            return 'View not found for component: ' . $name; // Return an error message if no view found
+        }
+
+        // Check if the layout exists, if not fallback to the default layout ('melasistema')
+        if (!isset($component['layouts'][$layoutKey])) {
+            $layoutKey = 'melasistema'; // Fallback to default layout
+        }
+
+        // Retrieve the layout configuration
+        $layoutConfig = $this->getLayoutConfiguration($component, $layoutKey);
+
+        // Merge the layout and provided attributes with the default settings applied
+        $data = $this->mergeAttributes(
+            array_replace_recursive($layoutConfig['settings'] ?? [], $component['layouts'][$layoutKey]['settings'] ?? []),
+            $attributes
+        );
+
+        // Render the view with the merged data
+        return $this->viewFactory->make($component['view'], $data)->render();
+    }
+
+    /**
+     * Get the layout configuration for a given component and layout.
+     *
+     * @param array $component
+     * @param string $layout
+     * @return array
+     */
+    protected function getLayoutConfiguration(array $component, string $layout): array
+    {
+        // Default settings and layout configuration
+        $defaultLayoutConfig = [
+            'settings' => [], // Defaults for settings
+            'layout' => [],   // Defaults for layout
+        ];
+
+        // Ensure the layout exists in the component
+        if (!isset($component['layouts'][$layout])) {
+            return $defaultLayoutConfig; // Fallback to default layout config
+        }
+
+        // Retrieve the layout settings and layout data
+        $layoutConfig = $component['layouts'][$layout];
+
+        // Return the layout configuration, using default values when necessary
+        return [
+            'settings' => $layoutConfig['settings'] ?? $defaultLayoutConfig['settings'],
+            'layout' => $layoutConfig['layout'] ?? $defaultLayoutConfig['layout'],
+        ];
     }
 }
