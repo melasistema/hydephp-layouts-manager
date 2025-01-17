@@ -1,13 +1,3 @@
-/**
- * This is the Merged Tailwind CSS configuration file for the HydePHP Layouts Manager package.
- *
- * @package Melasistema\HydeLayoutsManager
- * @author  Luca Visciola
- * @copyright 2024 Luca Visciola
- * @license MIT License
- *
- **/
-
 const defaultTheme = require('tailwindcss/defaultTheme');
 const HydeLayoutsManagerConfig = require('./tailwind-layouts-manager.config.js');
 
@@ -19,10 +9,11 @@ module.exports = {
         './vendor/hyde/framework/resources/views/**/*.blade.php',
         ...HydeLayoutsManagerConfig.content,
     ],
-
+    safelist: [
+        ...HydeLayoutsManagerConfig.safelist
+    ],
     theme: {
         extend: {
-            ...HydeLayoutsManagerConfig.theme.extend,
             typography: {
                 DEFAULT: {
                     css: {
@@ -95,13 +86,14 @@ module.exports = {
                         },
                     },
                 },
+
             },
             colors: {
                 indigo: {
                     500: '#5956eb',
-                },
-
+                }
             },
+            ...HydeLayoutsManagerConfig.theme.extend,
         },
     },
 

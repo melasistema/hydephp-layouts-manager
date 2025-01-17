@@ -6,7 +6,19 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         @include('hyde-layouts-manager::layouts.melasistema.navigation.navigation-brand')
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><a href="{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.url', 'https://github.com/melasistema/hydephp-layouts-manager')  }}" target="{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.urlTarget', '_self')  }}">{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.text', 'Get Started')  }}</a></button>
+
+            <button type="button" class="
+                {{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.extraClasses')  }}
+                {{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.textColor')  }}
+                {{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.bgColor')  }}
+                dark:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.darkBgColor')  }}
+                hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.hoverBgColor')  }}
+                dark:hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.darkHoverBgColor')  }}
+                focus:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.focusRingColor')  }}
+                dark:focus:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.darkFocusRingColor')  }}
+            ">
+
+                <a href="{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.url', 'https://github.com/melasistema/hydephp-layouts-manager')  }}" target="{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.urlTarget', '_self')  }}">{{ config('hyde-layouts-manager.layouts.melasistema.navigation.cta.text', 'Get Started')  }}</a></button>
             <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -24,7 +36,14 @@
                         @if($item instanceof \Hyde\Framework\Features\Navigation\DropdownNavItem)
                             <div class="relative group">
                                 <!-- Dropdown Button -->
-                                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-{{ $loop->index }}" class="flex items-center text-gray-700 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500">
+                                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-{{ $loop->index }}" class="
+                                    flex
+                                    items-center
+                                    {{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.color')  }}
+                                    dark:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.darkColor')  }}
+                                    hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.hoverColor')  }}
+                                    dark:hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.darkHoverColor')  }}
+                                ">
                                     {{ \Hyde\Hyde::makeTitle($item->label) }}
                                     <svg class="w-4 h-4 ml-1" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -35,7 +54,15 @@
                                     <ul class="py-1">
                                         @foreach($item->items as $subItem)
                                             <li>
-                                                <a href="{{ $subItem }}" class="block py-2 px-4 text-gray-700 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500">
+                                                <a href="{{ $subItem }}" class="
+                                                    block
+                                                    py-2
+                                                    px-4
+                                                    {{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.color')  }}
+                                                    dark:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.darkColor')  }}
+                                                    hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.hoverColor')  }}
+                                                    dark:hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.darkHoverColor')  }}
+                                                ">
                                                     {{ $subItem->label }}
                                                 </a>
                                             </li>
@@ -44,7 +71,13 @@
                                 </div>
                             </div>
                         @else
-                            <a href="{{ $item }}" {!! $item->isCurrent() ? 'aria-current="page"' : '' !!} class="block text-gray-700 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500">
+                            <a href="{{ $item }}" {!! $item->isCurrent() ? 'aria-current="page"' : '' !!} class="
+                                block
+                                {{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.color')  }}
+                                dark:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.darkColor')  }}
+                                hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.hoverColor')  }}
+                                dark:hover:{{ config('hyde-layouts-manager.layouts.melasistema.navigation.navbarLink.darkHoverColor') }}
+                            ">
                                 {{ $item->label }}
                             </a>
                         @endif

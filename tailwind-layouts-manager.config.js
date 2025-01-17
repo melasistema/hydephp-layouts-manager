@@ -26,7 +26,7 @@ const userFonts = fs.existsSync(fontConfigPath)
     ? JSON.parse(fs.readFileSync(fontConfigPath, 'utf8'))
     : {};
 
-// Dynamically load font configurations based on the layout specified in the .env DEFAULT_LAYOUT
+// Dynamically load fonts based on the default layout injected by PHP
 const layoutFonts = userFonts?.layouts?.[process.env.DEFAULT_LAYOUT || 'melasistema']?.families || {};
 const typographyMapping = userFonts?.layouts?.[process.env.DEFAULT_LAYOUT || 'melasistema']?.typography_mapping || {};
 
@@ -36,6 +36,31 @@ module.exports = {
         './vendor/melasistema/hyde-layouts-manager/resources/views/**/*.blade.php',
         './vendor/melasistema/hyde-layouts-manager/resources/assets/**/*.css',
         './vendor/melasistema/hyde-layouts-manager/resources/assets/**/*.js',
+    ],
+    safelist: [
+        'md:py-32',
+        'lg:py-32',
+        'pt-20',
+        'md:pt-20',
+        'pb-20',
+        'pt-32',
+        'md:pt-32',
+        'lg:pt-32',
+        'pb-32',
+        'md:pt-36',
+        'lg:pt-36',
+        'py-20',
+        'md:py-36',
+        'lg:py-36',
+        'font-primary',
+        'font-secondary',
+        'font-display',
+        'font-heading',
+        'font-subheading',
+        'font-accent',
+        'font-code',
+        'font-small',
+        'font-special'
     ],
     theme: {
         extend: {
@@ -49,6 +74,12 @@ module.exports = {
                 accent: [safeFontSplit(layoutFonts.accent), 'cursive'],
                 code: [safeFontSplit(layoutFonts.code), 'monospace'],
                 small: [safeFontSplit(layoutFonts.small), 'sans-serif'],
+            },
+            colors: {
+                purple: {
+                    500: '#ca34e8',
+                    800: '#4C1EC6',
+                },
             },
         },
     },
@@ -69,6 +100,7 @@ module.exports = {
                     'blockquote': { fontFamily: safeFontSplit(layoutFonts[typographyMapping.blockquote] || 'serif') },
                     'label': { fontFamily: safeFontSplit(layoutFonts[typographyMapping.label] || 'system-ui') },
                     'button': { fontFamily: safeFontSplit(layoutFonts[typographyMapping.button] || 'system-ui') },
+                    '.font-special': { fontFamily: safeFontSplit(layoutFonts[typographyMapping.special] || 'system-ui') },
                 });
             }
         }),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager\Traits;
 
+use App\Services\MediaPathResolver;
 use Hyde\Facades\Config;
 
 /**

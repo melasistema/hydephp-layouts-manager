@@ -73,6 +73,15 @@ class HydeLayoutsManagerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        // Ensure assets in the configuration are resolved when accessed
+        /*$config = $this->app['config']->get('hyde-layouts-manager.', []);
+        foreach ($config as $key => $closure) {
+            if ($closure instanceof \Closure) {
+                $this->app['config']->set("hyde-layouts-manager.$key", $closure());
+            }
+        }*/
+
         // Load views from the published folder, if available, or fallback to the package's views
         $this->loadViewsFrom([
             resource_path('views/vendor/hyde-layouts-manager'), // Check for published views
