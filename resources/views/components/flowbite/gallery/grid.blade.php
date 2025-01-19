@@ -28,7 +28,7 @@
 -->
 
 @props([
-    'styleKey' => 'melasistema', // Default style key
+    'styleKey' => 'default', // Default style key
     'images' => [], // Images provided directly to the component
     'settings' => [], // Settings to override defaults
 ])
