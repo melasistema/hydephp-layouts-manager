@@ -38,20 +38,28 @@ module.exports = {
         './vendor/melasistema/hyde-layouts-manager/resources/assets/**/*.js',
     ],
     safelist: [
-        'md:py-32',
-        'lg:py-32',
+        // Spacing (Padding - Top)
         'pt-20',
-        'md:pt-20',
-        'pb-20',
         'pt-32',
+        'pt-36',
+        'md:pt-20',
         'md:pt-32',
-        'lg:pt-32',
-        'pb-32',
         'md:pt-36',
+        'lg:pt-32',
         'lg:pt-36',
+
+        // Spacing (Padding - Bottom)
+        'pb-20',
+        'pb-32',
+
+        // Spacing (Padding - Y Axis)
         'py-20',
+        'md:py-32',
         'md:py-36',
+        'lg:py-32',
         'lg:py-36',
+
+        // Fonts
         'font-primary',
         'font-secondary',
         'font-display',
@@ -60,7 +68,7 @@ module.exports = {
         'font-accent',
         'font-code',
         'font-small',
-        'font-special'
+        'font-special',
     ],
     theme: {
         extend: {

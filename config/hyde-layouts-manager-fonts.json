@@ -10,7 +10,8 @@
         "subheading": "Karla:wght@400;600",
         "accent": "Pacifico:wght@400",
         "code": "Fira Code:wght@400;500",
-        "small": "Raleway:wght@400;600"
+        "small": "Raleway:wght@400;600",
+        "special": "Indie Flower:wght@400"
       },
       "typography_mapping": {
         "h1": "display",
@@ -24,7 +25,8 @@
         "code": "code",
         "blockquote": "accent",
         "label": "secondary",
-        "button": "heading"
+        "button": "heading",
+        "special": "special"
       },
       "custom_css": {}
     }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Melasistema\HydeLayoutsManager\Traits;
 
-use App\Services\MediaPathResolver;
 use Hyde\Facades\Config;
 
 /**
@@ -67,13 +66,6 @@ trait HasAttributes
                 $defaultAttributes['layout'] ?? [],
                 $attributes['layout']
             );
-
-            // Handle any special layout-related conditions here
-            // Example: Make sure to keep 'showSubHeadingText' consistent with 'subHeadingText'
-            if (isset($attributes['layout']['showSubHeadingText']) && !$attributes['layout']['showSubHeadingText']) {
-                // If 'showSubHeadingText' is false, you might want to override related settings.
-                $defaultAttributes['settings']['subHeadingText'] = ''; // Ensure the subheading text is cleared out
-            }
         }
 
         // Merge non-array attributes, prioritizing passed attributes

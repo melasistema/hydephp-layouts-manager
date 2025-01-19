@@ -62,8 +62,8 @@ return [
                 'brand' => [
                     'type' => 'custom', // accepted values: "image" "text" "custom"
                     'url' => '/',
-                    'lightLogo'  => 'media/hyde-layouts-manager/logo/logo-navigation-light.png',
-                    'darkLogo'  => 'media/hyde-layouts-manager/logo/logo-navigation-dark.png',
+                    'lightLogo'  => 'hyde-layouts-manager/logo/logo-navigation-light.png',
+                    'darkLogo'  => 'hyde-layouts-manager/logo/logo-navigation-dark.png',
                     'logoHeight' => 'h-10',
                 ],
                 'navbarLink' => [
@@ -215,8 +215,8 @@ return [
                                 'settings' => [
                                     'bgColor' => 'bg-white',
                                     'darkBgColor' => 'bg-gray-900',
-                                    'bgImageUrl' => 'media/hyde-layouts-manager/jumbotron/hero-purple-background.png',
-                                    'darkBgImageUrl' => 'media/hyde-layouts-manager/jumbotron/hero-purple-background-dark.png',
+                                    'bgImageUrl' => 'hyde-layouts-manager/jumbotron/hero-purple-background.png',
+                                    'darkBgImageUrl' => 'hyde-layouts-manager/jumbotron/hero-purple-background-dark.png',
                                     'bgImageAdditionalClasses' => 'bg-cover bg-center',
                                     'padding' => 'py-20 md:py-36 lg:py-36',
                                     'headingText' => 'HydePHP Layouts Manager',
@@ -275,7 +275,7 @@ return [
                                         'focusRingColor' => 'ring-purple-800',
                                         'darkFocusRingColor' => 'ring-purple-800',
                                     ],
-                                    'imageBelowHero' => 'media/hyde-layouts-manager/jumbotron/hero-purple-image.png',
+                                    'imageBelowHero' => 'hyde-layouts-manager/jumbotron/hero-purple-image.png',
                                 ]
                             ]
                         ],
@@ -285,20 +285,27 @@ return [
             'carousel' => [
                 'default-slider' => [
                     'view' => 'hyde-layouts-manager::components.flowbite.carousel.default-slider',
-                    'default' => [
-                        'layout' => [
-                            'showIndicators' => true,  // New flag to control visibility of the indicators
-                            'showControls' => true,    // New flag to control visibility of the controls
-                            'rounded' => false,         // New flag to control rounded corners
+                    'styles' => [
+                        'default' => [
+                            'config' => [
+                                'layout' => [
+                                    'showIndicators' => true,  // New flag to control visibility of the indicators
+                                    'showControls' => true,    // New flag to control visibility of the controls
+                                    'rounded' => false,         // New flag to control rounded corners
+                                ],
+                                'settings' => [
+
+                                ],
+                                'images' => [
+                                    'hyde-layouts-manager/carousel/example/carousel-1.svg',
+                                    'hyde-layouts-manager/carousel/example/carousel-2.svg',
+                                    'hyde-layouts-manager/carousel/example/carousel-3.svg',
+                                    'hyde-layouts-manager/carousel/example/carousel-4.svg',
+                                    'hyde-layouts-manager/carousel/example/carousel-5.svg',
+                                ],
+                            ]
                         ],
-                        'images' => [
-                            'carousel/example/carousel-1.svg',
-                            'carousel/example/carousel-2.svg',
-                            'carousel/example/carousel-3.svg',
-                            'carousel/example/carousel-4.svg',
-                            'carousel/example/carousel-5.svg',
-                        ],
-                    ],
+                    ]
                 ],
             ],
             'gallery' => [
@@ -309,7 +316,7 @@ return [
                             'config' => [
                                 'layout' => [
                                     'blackAndWhite' => false,  // New flag to control black and white images
-                                    'blackAndWhiteRandom' => false,  // New flag to control random black and white images
+                                    'randomBlackAndWhite' => false,
                                 ],
                                 'settings' => [
                                     'cols' => [
@@ -362,26 +369,28 @@ return [
                 ]
             ],
             'accordion' => [
-                'view' => 'hyde-layouts-manager::components.accordion',
-                'styles' => [
-                    'default' => [
-                        'layout' => [
-                            // Add any additional layout options here in the future
-                        ],
-                        'settings' => [
-                            'bgColor' => 'bg-white',          // Default background color
-                            'darkBgColor' => 'dark:bg-gray-900',  // Default dark mode background color
-                            'textColor' => 'text-gray-900',          // Default text color
-                            'darkTextColor' => 'dark:text-white', // Default dark mode text color
-                        ],
-                        'items' => [                          // Default accordion items
-                            [
-                                'title' => '🚀 What is HydePHP Layouts Manager?',
-                                'description' => 'HydePHP Layouts Manager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. It\'s already available a template and some components using <a href="https://flowbite.com" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
-                            ],
-                            [
-                                'title' => '🌟 Why Use HydePHP Layouts Manager?',
-                                'description' => '
+                'default-accordion' => [
+                    'view' => 'hyde-layouts-manager::components.flowbite.accordion.default-accordion',
+                    'styles' => [
+                        'default' => [
+                            'config' => [
+                                'layout' => [
+                                    // Add any additional layout options here in the future
+                                ],
+                                'settings' => [
+                                    'bgColor' => 'bg-white',          // Default background color
+                                    'darkBgColor' => 'dark:bg-gray-900',  // Default dark mode background color
+                                    'textColor' => 'text-gray-900',          // Default text color
+                                    'darkTextColor' => 'dark:text-white', // Default dark mode text color
+                                ],
+                                'items' => [ // Default accordion items
+                                    [
+                                        'title' => '🚀 What is HydePHP Layouts Manager?',
+                                        'description' => 'HydePHP Layouts Manager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. It\'s already available a template and some components using <a href="https://flowbite.com" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
+                                    ],
+                                    [
+                                        'title' => '🌟 Why Use HydePHP Layouts Manager?',
+                                        'description' => '
                             <ul>
                               <li><strong>Dynamic Layouts:</strong> Quickly switch and manage layouts across your site.</li>
                               <li><strong>Reusable Components:</strong> Save time by creating modular components with default attributes.</li>
@@ -390,10 +399,10 @@ return [
                             </ul>
                             <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Learn more and get started →</a></strong>
                         '
-                            ],
-                            [
-                                'title' => '🎯 Who Is It For?',
-                                'description' => '
+                                    ],
+                                    [
+                                        'title' => '🎯 Who Is It For?',
+                                        'description' => '
                             HydePHP Layouts Manager is perfect for:
                             <ul>
                               <li>Developers building blogs, portfolios, or complex sites with HydePHP.</li>
@@ -402,10 +411,10 @@ return [
                             </ul>
                             <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">See examples and contribute →</a></strong>
                         '
-                            ],
-                            [
-                                'title' => '💡 Key Benefits',
-                                'description' => '
+                                    ],
+                                    [
+                                        'title' => '💡 Key Benefits',
+                                        'description' => '
                             <ul>
                               <li><strong>Centralized Configuration:</strong> Manage all layouts and components from one file.</li>
                               <li><strong>Flexible Defaults:</strong> Override default attributes easily in Blade templates.</li>
@@ -413,16 +422,16 @@ return [
                             </ul>
                             <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Try it for yourself →</a></strong>
                         '
-                            ],
-                            [
-                                'title' => '🚀 Ready to Get Started?',
-                                'description' => '
+                                    ],
+                                    [
+                                        'title' => '🚀 Ready to Get Started?',
+                                        'description' => '
                              Download HydePHP Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Download from GitHub →</a></strong>
                         '
-                            ],
-                            [
-                                'title' => '✨ Credits',
-                                'description' => '
+                                    ],
+                                    [
+                                        'title' => '✨ Credits',
+                                        'description' => '
                              HydePHP Layouts Manager is built with the help of many amazing tools and frameworks:
                             <ul>
                               <li><strong>HydePHP:</strong> A modern PHP static site generator. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://hydephp.github.io/" target="_blank">Explore HydePHP →</a></li>
@@ -430,83 +439,12 @@ return [
                             </ul>
                             Special thanks to the open-source community for their contributions!
                         '
+                                    ],
+                                ],
                             ],
                         ],
-                    ],
+                    ]
                 ]
-
-            ],
-        ],
-        'accordion' => [
-            'view' => 'hyde-layouts-manager::components.accordion',
-            'default' => [
-                'layout' => [
-                    // Add any additional layout options here in the future
-                ],
-                'settings' => [
-                    'bgColor' => 'bg-white',          // Default background color
-                    'darkBgColor' => 'dark:bg-gray-900',  // Default dark mode background color
-                    'textColor' => 'text-gray-900',          // Default text color
-                    'darkTextColor' => 'dark:text-white', // Default dark mode text color
-                ],
-                'items' => [                          // Default accordion items
-                    [
-                        'title' => '🚀 What is HydePHP Layouts Manager?',
-                        'description' => 'HydePHP Layouts Manager is a powerful package designed to simplify layout and component management for your HydePHP. With it, you can build dynamic, reusable designs while keeping your codebase clean and maintainable. It\'s already available a template and some components using <a href="https://flowbite.com" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> <br><br> <strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Explore it on GitHub →</a></strong>'
-                    ],
-                    [
-                        'title' => '🌟 Why Use HydePHP Layouts Manager?',
-                        'description' => '
-                            <ul>
-                              <li><strong>Dynamic Layouts:</strong> Quickly switch and manage layouts across your site.</li>
-                              <li><strong>Reusable Components:</strong> Save time by creating modular components with default attributes.</li>
-                              <li><strong>Easy Integration:</strong> Works seamlessly with HydePHP.</li>
-                              <li><strong>CLI Tools:</strong> Automate tasks like listing layouts, merging Tailwind configurations and more.</li>
-                            </ul>
-                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Learn more and get started →</a></strong>
-                        '
-                    ],
-                    [
-                        'title' => '🎯 Who Is It For?',
-                        'description' => '
-                            HydePHP Layouts Manager is perfect for:
-                            <ul>
-                              <li>Developers building blogs, portfolios, or complex sites with HydePHP.</li>
-                              <li>Laravel users looking for better layout and component management.</li>
-                              <li>Teams seeking clean, maintainable design workflows. It\'s already including a Theme and few <a href="https://flowbite.com/" target="_blank">Flowbite</a> open source components.</li>
-                            </ul>
-                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">See examples and contribute →</a></strong>
-                        '
-                    ],
-                    [
-                        'title' => '💡 Key Benefits',
-                        'description' => '
-                            <ul>
-                              <li><strong>Centralized Configuration:</strong> Manage all layouts and components from one file.</li>
-                              <li><strong>Flexible Defaults:</strong> Override default attributes easily in Blade templates.</li>
-                              <li><strong>Improved Workflow:</strong> Save time with built-in tools and reusable designs.</li>
-                            </ul>
-                            <br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Try it for yourself →</a></strong>
-                        '
-                    ],
-                    [
-                        'title' => '🚀 Ready to Get Started?',
-                        'description' => '
-                             Download HydePHP Layouts Manager now and elevate your HydePHP projects. With easy installation, rich features, and detailed documentation, it\'s the perfect addition to your toolkit.<br><br><strong><a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/melasistema/hydephp-layouts-manager" target="_blank">Download from GitHub →</a></strong>
-                        '
-                    ],
-                    [
-                        'title' => '✨ Credits',
-                        'description' => '
-                             HydePHP Layouts Manager is built with the help of many amazing tools and frameworks:
-                            <ul>
-                              <li><strong>HydePHP:</strong> A modern PHP static site generator. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://hydephp.github.io/" target="_blank">Explore HydePHP →</a></li>
-                              <li><strong>Flowbite:</strong> A library for beautiful, accessible UI components. <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://flowbite.com/" target="_blank">Explore Flowbite →</a></li>
-                            </ul>
-                            Special thanks to the open-source community for their contributions!
-                        '
-                    ],
-                ],
             ],
         ],
     ],

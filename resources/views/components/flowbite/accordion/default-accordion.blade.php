@@ -3,7 +3,7 @@
 | Accordion Component
 |--------------------------------------------------------------------------
 | This is the Accordion component file for the HydePHP Layouts Manager package.
-| File Path: resources/views/components/accordion.blade.php
+| File Path: resources/views/components/flowbite/accordion/default-accordion.blade.php
 |
 | Usage:
 | - Use the `renderComponent` method to render this component.
@@ -27,23 +27,56 @@
 -->
 
 @props([
-    'settings' => Config::getArray('hyde-layouts-manager.components.accordion.default.settings', []),
-    'layout' => Config::getArray('hyde-layouts-manager.components.accordion.default.layout', []),
-    'items' => Config::getArray('hyde-layouts-manager.components.accordion.default.items', []),
+    'styleKey' => 'default', // Default style key
+    'settings' => [], // Settings to override defaults
+    'layout' => [], // Layout overrides
+    'items' => [], // Items to override default accordion items
 ])
 
-<div id="accordion-flush"
-     class="{{ $settings['bgColor'] }} {{ $settings['darkBgColor'] }} {{ $settings['textColor'] }} {{ $settings['darkTextColor'] }}"
+@php
+    // Fetch the accordion configuration for the given style key
+    $accordionConfig = \Hyde\Facades\Config::get('hyde-layouts-manager.components.flowbite.accordion.default-accordion.styles.' . $styleKey);
+
+    // Validate that the configuration exists
+    if (!$accordionConfig || !isset($accordionConfig['config'])) {
+        throw new Exception("Accordion configuration for style key '{$styleKey}' is missing or invalid.");
+    }
+
+    // Merge the settings, layout, and items from configuration with any user-provided overrides
+    $mergedSettings = array_replace_recursive(
+        $accordionConfig['config']['settings'] ?? [],
+        $settings
+    );
+
+    $mergedLayout = array_replace_recursive(
+        $accordionConfig['config']['layout'] ?? [],
+        $layout
+    );
+
+    $mergedItems = $items ?: ($accordionConfig['config']['items'] ?? []);
+
+    // Generate a unique ID for this accordion instance
+    $accordionId = 'accordion-' . uniqid();
+@endphp
+
+<div id="{{ $accordionId }}"
+     class="{{ $mergedSettings['bgColor'] ?? 'bg-white' }} {{ $mergedSettings['darkBgColor'] ?? 'dark:bg-gray-900' }} {{ $mergedSettings['textColor'] ?? 'text-gray-900' }} {{ $mergedSettings['darkTextColor'] ?? 'dark:text-white' }}"
      data-accordion="collapse"
      data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
      data-inactive-classes="text-gray-500 dark:text-gray-400">
-    @foreach ($items as $key => $item)
-        <h2 id="accordion-flush-heading-{{ $key }}">
+    @foreach ($mergedItems as $key => $item)
+        @php
+            // Generate unique IDs for headings and bodies
+            $headingId = "{$accordionId}-heading-{$key}";
+            $bodyId = "{$accordionId}-body-{$key}";
+        @endphp
+
+        <h2 id="{{ $headingId }}">
             <button type="button"
                     class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
-                    data-accordion-target="#accordion-flush-body-{{ $key }}"
+                    data-accordion-target="#{{ $bodyId }}"
                     aria-expanded="true"
-                    aria-controls="accordion-flush-body-{{ $key }}">
+                    aria-controls="{{ $bodyId }}">
                 <span>{{ $item['title'] }}</span>
                 <svg data-accordion-icon
                      class="w-3 h-3 rotate-180 shrink-0"
@@ -55,7 +88,7 @@
                 </svg>
             </button>
         </h2>
-        <div id="accordion-flush-body-{{ $key }}" class="hidden" aria-labelledby="accordion-flush-heading-{{ $key }}">
+        <div id="{{ $bodyId }}" class="hidden" aria-labelledby="{{ $headingId }}">
             <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2">{!! $item['description'] !!}</p>
             </div>

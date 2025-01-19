@@ -63,7 +63,7 @@ class LayoutManager
      *
      * @param string $name
      * @param array $attributes
-     * @param string $layoutKey
+     * @param string $styleKey
      * @return string|null
      */
     public function renderComponent(string $name, array $attributes = [], string $styleKey = 'melasistema'): ?string

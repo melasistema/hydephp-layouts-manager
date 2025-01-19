@@ -3,7 +3,7 @@
 | Hero Component (Jumbotron)
 |--------------------------------------------------------------------------
 | This is the Hero component file for the HydePHP Layouts Manager package.
-| File Path: resources/views/components/hero.blade.php
+| File Path: resources/views/components/flowbite/hero-sections/jumbotron.blade.php
 |
 | Usage:
 | - Use the `renderComponent` method to render this component.
@@ -60,8 +60,6 @@
 
     // Set component id for dynamic dark mode background image
     $componentId = uniqid('hero-section-');
-
-    /*dd($mergedSettings);*/
 @endphp
 
 {{-- Rendering --}}
