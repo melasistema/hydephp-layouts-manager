@@ -62,8 +62,8 @@ return [
                 'brand' => [
                     'type' => 'custom', // accepted values: "image" "text" "custom"
                     'url' => '/',
-                    'lightLogo'  => 'hyde-layouts-manager/logo/logo-navigation-light.png',
-                    'darkLogo'  => 'hyde-layouts-manager/logo/logo-navigation-dark.png',
+                    'lightLogo'  => 'media/hyde-layouts-manager/logo/logo-navigation-light.png',
+                    'darkLogo'  => 'media/hyde-layouts-manager/logo/logo-navigation-dark.png',
                     'logoHeight' => 'h-10',
                 ],
                 'navbarLink' => [
@@ -215,8 +215,8 @@ return [
                                 'settings' => [
                                     'bgColor' => 'bg-white',
                                     'darkBgColor' => 'bg-gray-900',
-                                    'bgImageUrl' => 'hyde-layouts-manager/jumbotron/hero-purple-background.png',
-                                    'darkBgImageUrl' => 'hyde-layouts-manager/jumbotron/hero-purple-background-dark.png',
+                                    'bgImageUrl' => 'media/hyde-layouts-manager/jumbotron/hero-purple-background.png',
+                                    'darkBgImageUrl' => 'media/hyde-layouts-manager/jumbotron/hero-purple-background-dark.png',
                                     'bgImageAdditionalClasses' => 'bg-cover bg-center',
                                     'padding' => 'py-20 md:py-36 lg:py-36',
                                     'headingText' => 'HydePHP Layouts Manager',
@@ -275,7 +275,7 @@ return [
                                         'focusRingColor' => 'ring-purple-800',
                                         'darkFocusRingColor' => 'ring-purple-800',
                                     ],
-                                    'imageBelowHero' => 'hyde-layouts-manager/jumbotron/hero-purple-image.png',
+                                    'imageBelowHero' => 'media/hyde-layouts-manager/jumbotron/hero-purple-image.png',
                                 ]
                             ]
                         ],
@@ -340,26 +340,6 @@ return [
                                     'hyde-layouts-manager/gallery/hyde/10-hyde-logo-cut.png',
                                     'hyde-layouts-manager/gallery/hyde/11-hyde-logo-cut.png',
                                     'hyde-layouts-manager/gallery/hyde/12-hyde-logo-cut.png',
-                                ],
-                            ]
-                        ],
-                        'compact' => [
-                            'config' => [
-                                'layout' => [
-                                    'blackAndWhite' => false,  // New flag to control black and white images
-                                ],
-                                'settings' => [
-                                    'cols' => [
-                                        'default' => 2,
-                                        'md' => 3,
-                                    ],
-                                    'gap' => 'gap-2',
-                                    'rounded' => false,
-                                ],
-                                'images' => [
-                                    'hyde-layouts-manager/gallery/hyde/compact-01.png',
-                                    'hyde-layouts-manager/gallery/hyde/compact-02.png',
-                                    'hyde-layouts-manager/gallery/hyde/compact-03.png',
                                 ],
                             ]
                         ],
