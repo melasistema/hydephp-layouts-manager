@@ -5,6 +5,55 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## 0.3.0 - 2025-01-19
+
+### **Changed**
+
+- **Components Configuration**:
+  - Renamed components to align with **Flowbite conventions** for improved consistency.
+  - Restructured the components configuration tree to make it more extensible and future-proof. While this version represents a good starting point, it is likely not the final iteration. Exploring chunked JSON formats for configurations in the future may be beneficial. Feedback and suggestions are welcome!
+
+
+- **Render Component Method**:
+  - The **settings override mechanism** for components has been improved. Arrays such as `layout` and `settings`, defined in the `hydephp-layouts-manager.php` config file, are now **merged** to allow overriding of all options dynamically. Example usage:
+
+  ```php
+  {!! app('layout.manager')->renderComponent('flowbite.hero-sections.jumbotron', [
+      'styleKey' => 'default',
+      'settings' => [
+          'applyContentMaxWidth' => true,
+          'showPrimaryButton' => false,
+          'showSecondaryButton' => false,
+          'padding' => 'py-8 md:py-32 px-0 md:px-16',
+          'bgImageUrl' => asset('hyde-hat-jumbotron.png'),
+          'darkBgImageUrl' => asset('hyde-hat-jumbotron.png'),
+          'bgImageAdditionalClasses' => 'bg-contain bg-no-repeat',
+          'headingType' => 'h2',
+          'headingTextFontFamily' => 'secondary',
+          ...
+      ]
+  ]) !!}
+  ``` 
+        
+----------
+
+### **Added**
+
+- **Presets for Components**:
+  - Introduced the ability to define **presets** for components, enabling quick and flexible customization. Use the `styleKey` to easily switch between pre-configured styles.
+
+
+- **New Component Settings**:
+  - **Jumbotron**: Introduced numerous new attributes, providing highly granular customization options.
+  - **Grid**: Included additional settings for black & white control.
+
+
+- **Tailwind Configuration Updates**:
+  - Added new utility classes to the **Layouts Manager Tailwind configuration**.
+  - Added new utility classes and an appropriate **`safelist`** to ensure proper class compilation.
+
+
 ## 0.2.1 - 2025-01-06
 
 ### Fixed

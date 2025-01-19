@@ -293,9 +293,7 @@ return [
                                     'showControls' => true,    // New flag to control visibility of the controls
                                     'rounded' => false,         // New flag to control rounded corners
                                 ],
-                                'settings' => [
-
-                                ],
+                                'settings' => [],
                                 'images' => [
                                     'hyde-layouts-manager/carousel/example/carousel-1.svg',
                                     'hyde-layouts-manager/carousel/example/carousel-2.svg',

@@ -45,6 +45,7 @@
     );
 
     // Set default values for font families
+    $headingType = $mergedSettings['headingType'] ?? 'h1';
     $headingTextFontFamily = $mergedSettings['headingTextFontFamily'] ?? '';
     $subHeadingTextFontFamily = $mergedSettings['subHeadingTextFontFamily'] ?? '';
 
@@ -76,9 +77,9 @@
     <div class="mx-auto {{ $applyContentMaxWidth ? 'max-w-7xl' : '' }}">
         {{-- Heading --}}
         @if ($mergedSettings['headingText'] ?? false)
-            <h1 class="font-{{ $headingTextFontFamily }} {{ $mergedSettings['headingTextSize']['default'] ?? '' }} md:{{ $mergedSettings['headingTextSize']['md'] ?? '' }} lg:{{ $mergedSettings['headingTextSize']['lg'] ?? '' }} {{ $mergedSettings['headingTextColor'] ?? '' }} dark:{{ $mergedSettings['darkHeadingTextColor'] ?? '' }} text-{{ $mergedSettings['headingTextAlign'] ?? '' }} {{ $mergedSettings['headingTextExtraClasses'] ?? '' }}">
+            <{{$headingType}} class="font-{{ $headingTextFontFamily }} {{ $mergedSettings['headingTextSize']['default'] ?? '' }} md:{{ $mergedSettings['headingTextSize']['md'] ?? '' }} lg:{{ $mergedSettings['headingTextSize']['lg'] ?? '' }} {{ $mergedSettings['headingTextColor'] ?? '' }} dark:{{ $mergedSettings['darkHeadingTextColor'] ?? '' }} text-{{ $mergedSettings['headingTextAlign'] ?? '' }} {{ $mergedSettings['headingTextExtraClasses'] ?? '' }}">
                 {!! $mergedSettings['headingText'] !!}
-            </h1>
+            </{{$headingType}}>
         @endif
 
         {{-- Subheading --}}

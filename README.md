@@ -3,11 +3,11 @@
 
 **Simplify layout and component management in your HydePHP projects.**
 
-HydePHP Layouts Manager is a powerful package designed to simplify the management of layouts and reusable components in your [HydePHP](https://hydephp.github.io/) projects. It provides an intuitive way to organize and customize themes, layouts, and components, enhancing your workflow while keeping your codebase clean and maintainable.
+HydePHP Layouts Manager is a powerful package designed to simplify the management of layouts and reusable components in your [HydePHP](https://hydephp.github.io/) projects. It provides an intuitive way to organize and customize themes, layouts, and components with centralized presets and easy override, enhancing your workflow while keeping your codebase clean and maintainable.
 
-![HydePHP Layouts Manager](resources/images/mixed/header-melasistema-hydephp.png)
+![HydePHP Layouts Manager](resources/images/mixed/header-melasistema-hydephp-v03.jpg)
 
-**Check it out:** [HydePHP Layouts Manager](https://hydephp.melasistema.com)
+**Check it out in action:** [HydePHP Layouts Manager](https://hydephp.melasistema.com)
 
 ## 🌟 Features
 
@@ -88,6 +88,7 @@ php hyde vendor:publish --provider="Melasistema\HydeLayoutsManager\HydeLayoutsMa
 Manually include the Layouts Manager configuration in your `tailwind.config.js` file:
 
 ```javascript
+const defaultTheme = require('tailwindcss/defaultTheme');
 const HydeLayoutsManagerConfig = require('./tailwind-layouts-manager.config.js');
 
 module.exports = {
@@ -98,9 +99,13 @@ module.exports = {
         './vendor/hyde/framework/resources/views/**/*.blade.php',
         ...HydeLayoutsManagerConfig.content,
     ],
-
+    safelist: [
+        ...HydeLayoutsManagerConfig.safelist
+    ],
     theme: {
         extend: {
+            typography: {},
+            colors: {},
             ...HydeLayoutsManagerConfig.theme.extend,
         },
     },
@@ -271,12 +276,16 @@ Below is an example of how your project could be structured after installing the
 my-hyde-project/
 ├── config/
 │   └── hyde-layouts-manager.php
+|   └── hyde-layouts-manager-fonts.json
 ├── resources/
 │   └── views/
 │       └── vendor/
 │           └── hyde-layouts-manager/
 │               ├── components/
-│               │   └── hero.blade.php
+│               │   └── flowbite/
+│               │      └── hero-sections/
+│               │          └── jumbotron.blade.php
+│               │   
 │               └── layouts/
 │                   └── melasistema/
 │                       └── app.blade.php
@@ -296,14 +305,15 @@ file: `config/hyde-layouts-manager-fonts.json`
     "melasistema": {
       "use_google_fonts": true,
       "families": {
-        "primary": "Indie Flower:wght@400",
-        "secondary": "Sour Gummy:wght@600",
-        "display": "Sour Gummy:wght@600",
-        "heading": "Sour Gummy:wght@600",
-        "subheading": "Handlee:wght@400",
-        "accent": "Just Another Hand:wght@400",
+        "primary": "Nunito Sans:wght@400;600;700",
+        "secondary": "Poppins:wght@500;600;700",
+        "display": "Fredoka:wght@400;600",
+        "heading": "Nunito:wght@600;700",
+        "subheading": "Karla:wght@400;600",
+        "accent": "Pacifico:wght@400",
         "code": "Fira Code:wght@400;500",
-        "small": "Amatic SC:wght@400;700"
+        "small": "Raleway:wght@400;600",
+        "special": "Indie Flower:wght@400"
       },
       "typography_mapping": {
         "h1": "display",
@@ -315,9 +325,10 @@ file: `config/hyde-layouts-manager-fonts.json`
         "p": "primary",
         "small": "small",
         "code": "code",
-        "blockquote": "display",
+        "blockquote": "accent",
         "label": "secondary",
-        "button": "heading"
+        "button": "heading",
+        "special": "special"
       },
       "custom_css": {}
     }
@@ -330,116 +341,102 @@ file: `config/hyde-layouts-manager-fonts.json`
 
 ----------
 
-### 🧩 Using Components
+## 🧩 Using Components
 
 Components are reusable UI elements with configurable defaults. The package provides a method to dynamically render components in your Blade templates.
 
 ----------
 
-#### **Using `renderComponent()`**
+### **Using `renderComponent()`**
 
-The `renderComponent()` method, provided by the `HydePHP Layouts Manager`, dynamically renders components with the ability to override default configurations. Here's an example:
+The `renderComponent()` method, provided by the `HydePHP Layouts Manager`, dynamically renders components with the ability to override default configurations. Keep in mind that all preset groups are merged into the `settings`.
+
+#### Example: Overriding the `Jumbotron` Component
+
+Here's an example of how to override the `Jumbotron` component's `default` presets using the `styleKey`:
 
 ```php
-    {!! app('layout.manager')->renderComponent('hero', [
-    
-        'layout' => [
-            'showSecondaryButton' => false,
-        ],
-        'settings' => [
-            'textColor' => 'text-indigo-500',
-            'darkTextColor' => 'dark:text-white',
-            'headingText' => 'Make magic with HydePHP Layouts Manager',
-            'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
-            ...
-        ]
-                
-    ]) !!} 
-```
+{!! app('layout.manager')->renderComponent('flowbite.hero-sections.jumbotron', [
+    'styleKey' => 'default',
+    'settings' => [
+        'applyContentMaxWidth' => true,
+        'showPrimaryButton' => false,
+        'showSecondaryButton' => false,
+        'padding' => 'py-8 md:py-32 px-0 md:px-16',
+        'bgImageUrl' => asset('hyde-hat-jumbotron.png'),
+        'darkBgImageUrl' => asset('hyde-hat-jumbotron.png'),
+        'bgImageAdditionalClasses' => 'bg-contain bg-no-repeat',
+        'headingType' => 'h2',
+        'headingTextFontFamily' => 'secondary',
+        'headingText' => 'Whatever it is your\'re
+            <span class="text-purple-500 text-8xl">style</span>,
+            <br>we\'ve got you covered!' ,
+        'headingTextAlign' => 'right',
+        'subHeadingText' => 'Save <span class="text-purple-500">presets</span>,
+            <span class="text-purple-500">override</span> with ease, and design
+            <span class="text-purple-500">without limits</span>.',
+        'subHeadingTextFontFamily' => 'subheading',
+        'subHeadingTextAlign' => 'right',
+        'subHeadingTextExtraClasses' => 'pt-8',
+    ]
+]) !!}
+``` 
 
-This method fetches the component configuration from the `hyde-layouts-manager.php` configuration file, allowing you to:
+This method fetches the component configuration from the `hyde-layouts-manager.php` configuration file using the `presets` that can be defined with the `styleKey`, allowing you to:
 
-1.  Define defaults for each component.
+1.  Define multiple `presets` for each component.
 2.  Override settings dynamically at runtime.
 
 ----------
 
-#### **Deprecation Notice**
+### **Configuring Components**
 
-The usage of `@include` to render components is deprecated starting from version `0.1.0`. While previously supported, this approach does not leverage the package’s configuration capabilities and can lead to inconsistencies when managing assets like images.
-
-If you previously used `@include`, we recommend migrating to the `renderComponent()` method for a more robust and future-proof implementation:
-
-```php
-    // Deprecated
-    @include('hyde-layouts-manager::components.hero', [
-        'settings' => [
-            'headingText' => 'Make magic with HydePHP Layouts Manager',
-            'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
-        ]
-    ])
-    
-    // Recommended
-    {!! app('layout.manager')->renderComponent('hero', [
-        'settings' => [
-            'headingText' => 'Make magic with HydePHP Layouts Manager',
-            'subHeadingText' => 'HydePHP Layouts Manager simplifies layout and component management.',
-        ]
-    ]) !!}
-```
-
-----------
-
-#### **3. Configuring Components**
-
-You can customize default settings for components in the `hyde-layouts-manager.php` configuration file under the `components` key. For example:
+You can customize or create multiple presets settings for components in the `hyde-layouts-manager.php` configuration file within the `styles` array. For example:
 
 ```php
 'components' => [
-    'hero' => [
-            'view' => 'hyde-layouts-manager::components.hero',
-            'default' => [
-                'layout' => [
-                    'showSubHeadingText' => true,
-                    'showPrimaryButton' => true,
-                    'showSecondaryButton' => true,
-                ],
-                'settings' => [
-                    'bgColor' => 'bg-white',
-                    'darkBgColor' => 'dark:bg-gray-900',
-                    'padding' => 'py-8 px-4',
-                    'maxWidth' => 'max-w-screen-xl',
-                    'headingTextAlign' => 'center', // left, center, right
-                    'subHeadingTextAlign' => 'center', // left, center, right
-                    'buttonsGroupAlign' => 'center', // left, center, right
-                    'textColor' => 'text-gray-900',
-                    'darkTextColor' => 'dark:text-white',
-                    'headingText' => 'HydePHP Layouts Manager',
-                    'subHeadingText' => 'Manage your layouts and reusable components with ease.',
-                    'primaryButton' => [
-                        'text' => 'Get Started',
-                        'link' => 'https://github.com/melasistema/hydephp-layouts-manager',
-                        'bgColor' => 'bg-blue-700',
-                        'textColor' => 'text-white',
-                        'hoverBgColor' => 'hover:bg-blue-800',
-                        'focusRingColor' => 'focus:ring-blue-300',
-                        'darkFocusRingColor' => 'dark:focus:ring-blue-900',
-                    ],
-                    'secondaryButton' => [
-                        'text' => 'About Me',
-                        'link' => 'https://github.com/melasistema',
-                        'bgColor' => 'bg-white',
-                        'textColor' => 'text-gray-900',
-                        'hoverBgColor' => 'hover:bg-gray-100',
-                        'borderColor' => 'border-gray-200',
-                        'focusRingColor' => 'focus:ring-gray-100',
-                        'darkFocusRingColor' => 'dark:focus:ring-gray-700',
+    'flowbite' => [
+        'carousel' => [
+            'default-slider' => [ // Preset identifier for the component
+                'view' => 'hyde-layouts-manager::components.flowbite.carousel.default-slider', // Blade view path
+                'styles' => [ // Define different style presets
+                    'default' => [ // Default style preset
+                        'config' => [
+                            'layout' => [ // Layout options for the component
+                                'showIndicators' => true,   // Show slide indicators
+                                'showControls' => true,     // Show next/previous controls
+                                'rounded' => false,         // Enable/disable rounded corners
+                            ],
+                            'settings' => [], // Additional settings for customization
+                            'images' => [ // Default images for the carousel
+                                'hyde-layouts-manager/carousel/example/carousel-1.svg',
+                                'hyde-layouts-manager/carousel/example/carousel-2.svg',
+                                'hyde-layouts-manager/carousel/example/carousel-3.svg',
+                                'hyde-layouts-manager/carousel/example/carousel-4.svg',
+                                'hyde-layouts-manager/carousel/example/carousel-5.svg',
+                            ],
+                        ]
                     ],
                 ]
             ],
         ],
+    ],
 ],
 ```
+
+### Key Parts of the Configuration
+
+1.  **`components`**: The top-level key for all components.
+2.  **`flowbite`**: The namespace or grouping for Flowbite-based components.
+3.  **`carousel`**: The specific component being configured.
+4.  **`default-slider`**: The identifier for this specific preset of the carousel.
+5.  **`view`**: Specifies the Blade template used to render this preset.
+6.  **`styles`**: Contains all available style presets for this component.
+    -   **`default`**: The name of the style preset (you can define multiple presets here).
+7.  **`config`**: Holds the customizable settings for the component:
+    -   **`layout`**: Layout options like showing indicators or controls.
+    -   **`settings`**: Additional configuration options that can be extended.
+    -   **`images`**: Default images to be used in the carousel.
 
 ----------
 
@@ -482,7 +479,7 @@ The package includes several Artisan commands to streamline your workflow:
 
 You can add custom layouts by defining them in the `layouts` section of the configuration file and placing the corresponding Blade templates in `resources/views/vendor/hyde-layouts-manager`.
 
-### Overriding Default Components
+### Overriding Default Components templates
 
 To customize components, publish the views and edit the files in `resources/views/vendor/hyde-layouts-manager/components`.
 
