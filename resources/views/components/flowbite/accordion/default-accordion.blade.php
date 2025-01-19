@@ -37,12 +37,12 @@
     // Fetch the accordion configuration for the given style key
     $accordionConfig = \Hyde\Facades\Config::get('hyde-layouts-manager.components.flowbite.accordion.default-accordion.styles.' . $styleKey);
 
-    // Validate that the configuration exists
+    // Validate the configuration
     if (!$accordionConfig || !isset($accordionConfig['config'])) {
         throw new Exception("Accordion configuration for style key '{$styleKey}' is missing or invalid.");
     }
 
-    // Merge the settings, layout, and items from configuration with any user-provided overrides
+    // Merge configuration settings, layout, and items with user-provided overrides
     $mergedSettings = array_replace_recursive(
         $accordionConfig['config']['settings'] ?? [],
         $settings
@@ -55,12 +55,18 @@
 
     $mergedItems = $items ?: ($accordionConfig['config']['items'] ?? []);
 
+    // Assign fallback values for individual settings
+    $bgColor = $mergedSettings['bgColor'] ?? 'bg-white';
+    $darkBgColor = $mergedSettings['darkBgColor'] ?? 'dark:bg-gray-900';
+    $textColor = $mergedSettings['textColor'] ?? 'text-gray-900';
+    $darkTextColor = $mergedSettings['darkTextColor'] ?? 'dark:text-white';
+
     // Generate a unique ID for this accordion instance
     $accordionId = 'accordion-' . uniqid();
 @endphp
 
 <div id="{{ $accordionId }}"
-     class="{{ $mergedSettings['bgColor'] ?? 'bg-white' }} {{ $mergedSettings['darkBgColor'] ?? 'dark:bg-gray-900' }} {{ $mergedSettings['textColor'] ?? 'text-gray-900' }} {{ $mergedSettings['darkTextColor'] ?? 'dark:text-white' }}"
+     class="{{ $bgColor }} {{ $darkBgColor }} {{ $textColor }} {{ $darkTextColor }}"
      data-accordion="collapse"
      data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
      data-inactive-classes="text-gray-500 dark:text-gray-400">

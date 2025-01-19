@@ -34,28 +34,31 @@
 ])
 
 @php
-    // Fetch the layout configuration for the carousel using the style key
-    $carouselConfig = \Hyde\Facades\Config::get('hyde-layouts-manager.components.flowbite.carousel.default-slider.styles.' . $styleKey);
+    // Fetch the configuration
+    $config = \Hyde\Facades\Config::get('hyde-layouts-manager.components.flowbite.carousel.default-slider.styles.' . $styleKey);
 
-    // Check if the style configuration exists
-    if (!$carouselConfig || !isset($carouselConfig['config'])) {
+    // Ensure the configuration exists
+    if (!$config || empty($config['config'])) {
         throw new Exception("Style configuration for key '{$styleKey}' is missing or invalid.");
     }
 
-    // Merge the default layout settings and user-provided settings
+    // Extract configuration settings
+    $layoutConfig = $config['config'];
+
+    // Merge user-provided settings with the configuration
     $mergedSettings = array_replace_recursive(
-        $carouselConfig['config']['layout'] ?? [],
-        $carouselConfig['config']['settings'] ?? [],
+        $layoutConfig['layout'] ?? [],
+        $layoutConfig['settings'] ?? [],
         $settings
     );
 
-    // Extract individual settings
+    // Extract settings
     $showIndicators = $mergedSettings['showIndicators'] ?? true;
     $showControls = $mergedSettings['showControls'] ?? true;
     $rounded = $mergedSettings['rounded'] ?? false;
 
-    // Use user-provided images, or fallback to configuration images
-    $allImages = $images ?: ($carouselConfig['config']['images'] ?? []);
+    // Use provided images or fall back to configuration
+    $allImages = $images ?: ($layoutConfig['images'] ?? []);
 @endphp
 
 <div class="relative w-full z-0" data-carousel="slide">
