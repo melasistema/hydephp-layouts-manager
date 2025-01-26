@@ -485,19 +485,114 @@ To customize components, publish the views and edit the files in `resources/view
 
 ### Dynamic Branding (with shipped default MelaSistema layout)
 
-Customize navigation branding by setting the `navigation.brand` options in the configuration file:
+#### Customizing the Navigation Brand
+
+The navigation brand (logo) can be customized through the `navigation.brand` configuration. You can use a text-based logo, an image logo, or a custom HTML logo. You can also configure the logo's behavior in light and dark themes. Below is an example configuration:
+
+```php
+'navigation' => [  
+    'brand' => [  
+        'type' => 'custom', // Accepted values: 'text', 'image', 'custom' 
+        'url' => '/',  
+        'lightLogo' => 'media/hyde-layouts-manager/logo/logo-navigation-light.png', // Path to the light logo 
+        'darkLogo' => 'media/hyde-layouts-manager/logo/logo-navigation-dark.png', // Path to the dark logo 
+        'logoHeight' => 'h-10', // Adjust the logo height (e.g., 'h-10' for height 2.5rem) 
+    ],  
+    'navbarLink' => [  
+        'color' => 'text-gray-700', // Normal state link color 
+        'darkColor' => 'text-gray-400', // Dark theme link color 
+        'hoverColor' => 'text-purple-500', // Hover state link color 
+        'darkHoverColor' => 'text-purple-500', // Dark theme hover color 
+    ],  
+],`
+```
+
+#### Customizing the Call to Action (CTA)
+
+You can configure a CTA button in the navigation to link to an external URL or trigger actions. Below is an example configuration for the CTA button:
 
 ```php
 'navigation' => [
-    'brand' => [
-        'type' => 'image', // options: 'text', 'image', 'custom'
-        'url' => '/',
-        'lightLogo' => 'media/logo-navigation-light.png',
-        'darkLogo' => 'media/logo-navigation-dark.png',
-        'logoHeight' => 'h-10',
+    'cta' => [
+        'enabled' => true, // Set to false to disable the CTA button
+        'text' => 'Get Started', // Button text
+        'textColor' => 'text-white', // Text color for the CTA button
+        'url' => 'https://github.com/melasistema/hydephp-layouts-manager', // URL to redirect
+        'urlTarget' => '_blank', // Define the link's target (_blank for a new tab)
+        'bgColor' => 'bg-purple-500', // Background color for the CTA button
+        'darkBgColor' => 'bg-purple-500', // Dark theme background color
+        'hoverBgColor' => 'bg-purple-800', // Hover state background color
+        'darkHoverBgColor' => 'bg-purple-800', // Dark theme hover color
+        'focusRingColor' => 'ring-purple-800', // Focus ring color
+        'darkFocusRingColor' => 'ring-purple-800', // Dark theme focus ring color
+        'extraClasses' => 'focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center', // Extra classes for styling
+    ],
+],
+``` 
+
+#### Customizing Social Media Links
+
+Social media links can be customized to include icons that link to your social platforms. The configuration allows you to toggle the visibility of each platform (e.g., GitHub, LinkedIn) and adjust the icon colors for light and dark themes. Below is an example configuration:
+
+```php
+'navigation' => [
+    'social' => [
+        'enabled' => true, // Enable or disable the social media icons section
+        'platforms' => [
+            'github' => [
+                'enabled' => true, // Enable GitHub link
+                'url' => 'https://github.com/melasistema', // Link to your GitHub profile
+                'icon' => '<svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path d="M16,2.345c7.735,0,14,6.265,14,14-.002,6.015-3.839,11.359-9.537,13.282..."></path></svg>',
+                'iconColor' => 'text-gray-700', // Light theme icon color
+                'darkIconColor' => 'text-white', // Dark theme icon color
+            ],
+            'linkedin' => [
+                'enabled' => true, // Enable LinkedIn link
+                'url' => 'https://www.linkedin.com/in/luca-visciola/', // Link to your LinkedIn profile
+                'icon' => '<svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path d="M26.111,3H5.889c-1.595,0-2.889,1.293-2.889,2.889..."></path></svg>',
+                'iconColor' => 'text-gray-700', // Light theme icon color
+                'darkIconColor' => 'text-white', // Dark theme icon color
+            ],
+            'facebook' => [
+                'enabled' => false, // Disable Facebook link
+                'url' => 'https://facebook.com', // Facebook URL
+                'icon' => '<svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path d="M16,2c-7.732,0-14,6.268-14,14..."></path></svg>',
+                'iconColor' => 'text-gray-700',
+                'darkIconColor' => 'text-white',
+            ],
+        ],
     ],
 ],
 ```
+
+### Footer Customization
+
+The footer can be customized to match your branding, colors, and content. You can set background and text colors for both light and dark themes, as well as modify the footer links and description. Below is an example configuration:
+
+```php
+'footer' => [
+    'view' => 'vendor.hyde-layouts-manager.layouts.melasistema.footer', // Path to the Blade view for the footer
+    'default' => [
+        'bgColor' => 'bg-white', // Light theme background color for the footer
+        'darkBgColor' => 'dark:bg-gray-800', // Dark theme background color
+        'textColor' => 'text-gray-900', // Light theme text color
+        'darkTextColor' => 'dark:text-white', // Dark theme text color
+        'description' => 'Manage your layouts and reusable components with ease.', // Footer description text
+        'links' => [
+            [
+                'title' => 'GitHub', // Footer link title
+                'url' => 'https://github.com/melasistema/hydephp-layouts-manager', // Link URL
+            ],
+            [
+                'title' => 'About Me',
+                'url' => 'https://github.com/melasistema',
+            ],
+        ],
+    ],
+],
+```
+
+With these options, you have full control over the navigation brand, CTA button, social media links, and footer content, ensuring your site is fully customizable and reflects your brand’s identity.
 
 ## 🌟 Credits
 
