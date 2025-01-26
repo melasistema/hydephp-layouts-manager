@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.4.0 - 2025-01-26
+
+### **Added**
+
+- **Themes Settings**:
+  - Added new theme settings to the `hyde-layouts-manager.php` configuration file.
+
+- **Navigation CTA Settings**:
+  - Introduced a new `cta.enabled` option in the configuration file to enable or disable the Call to Action (CTA) button in the navigation bar.
+
+- **Social Settings in Navigation**:
+  - Integrated a configurable social media section in the navigation.
+  - Social platforms such as GitHub, LinkedIn, Facebook, Instagram, X (formerly Twitter), and Discord have been added with customizable options like `enabled`, `url`, and `icon` (using SVG).
+  - You can now easily add custom social platforms by defining the `enabled` option, platform `name`, `url`, and `svgIcon` in the configuration.
+
 ## 0.3.1 - 2025-01-19
 
 ### Fixed
